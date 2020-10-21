@@ -19,7 +19,13 @@ public class BackToCastle : MonoBehaviour
         Move = false;
     }
 
+    public void ShowCanvasDistance(){
+        CanvasDistance.SetActive(true);
+    }
     
+    public void HideCanvasDistance(){
+        CanvasDistance.SetActive(false);
+    }
 
     // Update is called once per frame
     void Update()
