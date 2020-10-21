@@ -52,9 +52,12 @@ public class NetworkController : MonoBehaviour
             Obj.SendMessage("gotoObject", data);
         }
         */
-        
-        GameObject Obj = GameObject.Find(receiverObj);
-        Obj.SendMessage(action, data);
+        if(action == "ping"){
+             Main.SendMessage("InitFromServer");
+        }else{
+            GameObject Obj = GameObject.Find(receiverObj);
+            Obj.SendMessage(action, data);
+        }
         
 
         Debug.Log(action);

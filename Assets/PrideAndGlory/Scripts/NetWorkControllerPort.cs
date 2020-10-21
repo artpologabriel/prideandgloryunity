@@ -97,7 +97,7 @@ public class NetWorkControllerPort: MonoBehaviour {
                 
                 webView.Frame = new Rect(0, 0, Screen.width, Screen.height);
                 //webView.Show(true, UniWebViewTransitionEdge.Bottom, 1.5f);
-               // webView.Show();
+                webView.Show();
                 //StartCoroutine(hideME());                
                // webView.CleanCache();
                 //myTextEval.text = "Connected";

@@ -11,7 +11,9 @@ public class D_chatScript : MonoBehaviour
     public GameObject chatPanel, textObject;
 
     public int maxMessages = 25;
-    string messages = "";
+    string messages ="";
+    public InputField chatBox;
+    public Color playerMessage, info;
 
 
     List<Message> messageList = new List<Message>();
@@ -22,31 +24,40 @@ public class D_chatScript : MonoBehaviour
     }
 
 
-
-    void NewChat(string data)
-    {
-        var N = JSON.Parse(data);
-        var mess = N["message"].Value;
-        messages = mess;
-    }
-
-
- 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (chatBox.text != "")
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                messages = chatBox.text;
+                GameObject M = GameObject.FindWithTag("Main");
+                string data = "action:Chat,receiverObj:" + gameObject.name + ",message:"+ chatBox.text;
+                Debug.Log(data);
+                M.SendMessage("SendDataToSocket", data);
+                SendMessageToChat(messages, Message.MessaType.playerMessage);
+                chatBox.text = "";
+            }
 
-            GameObject M = GameObject.FindWithTag("Main");
-            string data = "action:NewChat,receiverObj:" + gameObject.name + ",message:New Message";
-            M.SendMessage("SendDataToSocket", data);
-            string data1 = "New Messages : " + messages;
-            SendMessageToChat(data1);
-            //Debug.Log("space"+ data);
+        }
+        else {
+            if (!chatBox.isFocused && Input.GetKeyDown(KeyCode.Return)) {
+                chatBox.ActivateInputField();
+            }
         }
     }
 
-    public void SendMessageToChat(string text){ 
+    void Chat(string data)
+    {
+        var N = JSON.Parse(data);
+        var mess = N["message"].Values;
+        Debug.Log("Here Deo"+mess);
+
+        messages = mess.ToString();
+    }
+
+    public void SendMessageToChat(string text,Message.MessaType messageType){ 
 
         if (messageList.Count >= maxMessages)
         {
@@ -56,10 +67,10 @@ public class D_chatScript : MonoBehaviour
 
         Message newMessages = new Message(); 
         newMessages.text = text;
+
         GameObject newText = Instantiate(textObject, chatPanel.transform);
         newMessages.textObject = newText.GetComponent<Text>();
         newMessages.textObject.text = newMessages.text;
-
         messageList.Add(newMessages);
 
     }
@@ -69,4 +80,10 @@ public class D_chatScript : MonoBehaviour
     public class Message{
         public string text;
         public Text textObject;
+    public MessaType messaType;
+    public enum MessaType { 
+        playerMessage,
+        info
+
+    }
     }

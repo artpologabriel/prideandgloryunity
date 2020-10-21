@@ -16,7 +16,9 @@ public class CastleRenderer : MonoBehaviour
 
     void OnBecameInvisible()
     {
-        Cam.SendMessage("ShowCanvasDistance");
-        OnCam = false;
+        if(Cam != null){
+           Cam.SendMessage("ShowCanvasDistance");
+           OnCam = false;
+        }
     }
 }
