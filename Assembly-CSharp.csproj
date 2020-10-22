@@ -28,7 +28,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,7 +37,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoConfig>true</NoConfig>
@@ -66,6 +66,8 @@
      <Compile Include="Assets\PrideAndGlory\Scripts\CamTileDistance.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\CastleRenderer.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Deo\D_chatScript.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\Deo\TabButton.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\Deo\TabGroup.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Empty_Tiles.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\GetDeviceID.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Grid.cs" />
