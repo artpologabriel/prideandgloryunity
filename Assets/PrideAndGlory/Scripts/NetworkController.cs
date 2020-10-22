@@ -14,7 +14,7 @@ public class NetworkController : MonoBehaviour
     
     public void SendDataToSocket (string data){
         NetworkControllerPort.SendMessage("SendDataToSocket", data);
-        Debug.Log("SendDataToSocket");
+        //Debug.Log("SendDataToSocket");
     }
 
     public void SocketData(string data){
@@ -25,7 +25,7 @@ public class NetworkController : MonoBehaviour
 
 
     void ProcessData(string data){
-        //var d = JsonMaker(data); 
+        Debug.Log("RECIEVED: "+ data);
         var N = JSON.Parse(data);
         var action = N["action"].Value;
         var receiverObj = N["receiverObj"].Value;
@@ -60,8 +60,8 @@ public class NetworkController : MonoBehaviour
         }
         
 
-        Debug.Log(action);
-        Debug.Log(data);
+        //Debug.Log(action);
+        
         
     }
 

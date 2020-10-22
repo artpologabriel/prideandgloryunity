@@ -33,8 +33,8 @@ public class PickDrag : MonoBehaviour
 		float xPos = transform.position.x;
 		float yPos = transform.position.y;
 		float zPos = transform.position.z;
-		string data = "action:moveObject,objectName:"+gameObject.name+",xPos:"+xPos+",yPos:"+yPos+",zPos:"+ zPos;
-		M.SendMessage("SendDataToSocket", data);
+	//	string data = "action:moveObject,receiverObj:"+gameObject.name+",objectName:"+gameObject.name+",xPos:"+xPos+",yPos:"+yPos+",zPos:"+ zPos;
+	//	M.SendMessage("SendDataToSocket", data);
 		
 		Moving = false;
 	}

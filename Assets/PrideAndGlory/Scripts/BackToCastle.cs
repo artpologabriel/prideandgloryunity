@@ -11,6 +11,15 @@ public class BackToCastle : MonoBehaviour
     public GameObject CanvasDistance;
     public GameObject CastleRenderer;
     
+
+    void Start()
+    {
+        string InitCredential = Main.InitCredential;
+        Debug.Log(InitCredential);
+
+    }
+
+
     public void GoBack(){
         Move = true;
     }
@@ -31,7 +40,7 @@ public class BackToCastle : MonoBehaviour
     void Update()
     {
         if(Move){
-            float step =  speed * Time.deltaTime; // calculate distance to move
+            float step =  speed; // * Time.deltaTime; // calculate distance to move
             transform.position = Vector3.MoveTowards(transform.position, targetGameObj.transform.position, step);
         }
 

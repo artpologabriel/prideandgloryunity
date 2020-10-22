@@ -14,7 +14,7 @@ public class D_chatScript : MonoBehaviour
     string messages ="";
     public InputField chatBox;
     public Color playerMessage, info;
-
+    string InitCredential = Main.InitCredential;
 
     List<Message> messageList = new List<Message>();
     // Start is called before the first frame update
@@ -31,9 +31,11 @@ public class D_chatScript : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
+
+                Debug.Log(InitCredential);
                 messages = chatBox.text;
                 GameObject M = GameObject.FindWithTag("Main");
-                string data = "action:Chat,receiverObj:" + gameObject.name + ",message:"+ chatBox.text;
+                string data = "action:chatObj,receiverObj:" + gameObject.name + ",message:"+ chatBox.text+" : "+InitCredential;
                 Debug.Log(data);
                 M.SendMessage("SendDataToSocket", data);
                 SendMessageToChat(messages, Message.MessaType.playerMessage);
@@ -46,15 +48,17 @@ public class D_chatScript : MonoBehaviour
                 chatBox.ActivateInputField();
             }
         }
+
+       
     }
 
-    void Chat(string data)
+    void chatObj(string data)
     {
         var N = JSON.Parse(data);
-        var mess = N["message"].Values;
-        Debug.Log("Here Deo"+mess);
+        var mess = N["message"].Value;
+        Debug.Log("Here Deo" + mess);
 
-        messages = mess.ToString();
+        messages = mess;
     }
 
     public void SendMessageToChat(string text,Message.MessaType messageType){ 

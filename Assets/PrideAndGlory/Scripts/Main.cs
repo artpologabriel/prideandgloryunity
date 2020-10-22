@@ -115,6 +115,7 @@ public class Main : MonoBehaviour
 
     public void SendDataToSocket(string data){        
         NetworkController.SendMessage("SendDataToSocket",JsonMaker(data));
+        Debug.Log("SEND: "+ data);
     }
 
 

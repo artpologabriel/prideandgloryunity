@@ -42,7 +42,7 @@ public class AddObjectController : MonoBehaviour
         
         string n = Main.InitCredential + "-"+ theDate + theTime;    
         string ObjName = Md5Sum(n);
-        string data = "action:addBuilding,who:,InitCredential:"+Main.InitCredential+",buildingType:Castle,buildingName:"+ObjName;
+        string data = "action:addBuilding,who:,receiverObj:"+gameObject.name+",InitCredential:"+Main.InitCredential+",buildingType:Castle,buildingName:"+ObjName;
         M.SendMessage("SendDataToSocket",data);
     }
 

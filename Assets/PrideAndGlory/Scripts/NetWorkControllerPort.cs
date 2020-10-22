@@ -139,7 +139,7 @@ public class NetWorkControllerPort: MonoBehaviour {
             if (message.Path.Equals("SocketData")) {
 				var data = message.Args["d"];
                 NetworkController.SendMessage("SocketData", data);
-                Debug.Log("SocketData" + data);								
+                //Debug.Log("SocketData" + data);								
 			}
 
 
@@ -272,7 +272,7 @@ public class NetWorkControllerPort: MonoBehaviour {
 
 
 
-            Debug.Log(message.Path);
+           // Debug.Log(message.Path);
            // string urlpath = message.Path.ToString();
            // StartCoroutine(LoadURL(urlpath));
 
