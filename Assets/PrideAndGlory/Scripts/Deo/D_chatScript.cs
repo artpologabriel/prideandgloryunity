@@ -8,13 +8,15 @@ public class D_chatScript : MonoBehaviour
 {
     [SerializeField]
 
-    public GameObject chatPanel, textObject;
+    public GameObject  MainObj, chatPanel, textObject;
+    
 
     public int maxMessages = 25;
     string messages ="";
     public InputField chatBox;
     public Color playerMessage, info;
     string InitCredential = Main.InitCredential;
+
 
     List<Message> messageList = new List<Message>();
     // Start is called before the first frame update
@@ -37,7 +39,13 @@ public class D_chatScript : MonoBehaviour
                 GameObject M = GameObject.FindWithTag("Main");
                 string data = "action:chatObj,receiverObj:" + gameObject.name + ",message:"+ chatBox.text+" : "+InitCredential;
                 Debug.Log(data);
-                M.SendMessage("SendDataToSocket", data);
+
+                if(M != null){
+                    M.SendMessage("SendDataToSocket", data);
+                }else{
+                    MainObj.SendMessage("SendDataToSocket", data);
+                }
+
                 SendMessageToChat(messages, Message.MessaType.playerMessage);
                 chatBox.text = "";
             }
