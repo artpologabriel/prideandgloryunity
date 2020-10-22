@@ -31,12 +31,13 @@ public class PlayObject : MonoBehaviour
 
     }
 
-    void gotoObject(string data){
+    public void gotoObject(string data){
         var N = JSON.Parse(data);
         var TargetObjectName = N["targetObject"].Value;
         GameObject targetObj  =GameObject.Find(TargetObjectName);
         targetGameObj = targetObj;
         Move = true;
+        Debug.Log("gotoObject Called by server");
     }
 
     void Update(){ 

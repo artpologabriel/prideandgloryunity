@@ -62,7 +62,7 @@ public class AddObjectController : MonoBehaviour
             Debug.Log("Others building");
             GameObject T = GameObject.FindWithTag("ObjParent");
             GameObject Obj = Instantiate(Building) as GameObject;
-            Obj.transform.parent = T.transform;
+           // Obj.transform.parent = T.transform;
             Obj.name = buildingName;
         }
 

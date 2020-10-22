@@ -18,8 +18,13 @@ public class RayCast : MonoBehaviour {
 			//	Debug.Log ("Object position = " + hit.collider.gameObject.transform.position);
 				//Debug.Log ("--------------");
 				GameObject h = GameObject.Find(hit.collider.name);
-				h.SendMessage("GotHit", null, SendMessageOptions.DontRequireReceiver);
+				h.SendMessage("GotHit", null, SendMessageOptions.DontRequireReceiver);				
 				//targetObj.SendMessage(Message);
+				Debug.Log("hitpoint" + hit.point);
+				if(h.name != "Map"){
+					GameObject Map = GameObject.FindWithTag("Map");
+					Map.SendMessage("HideTiles");
+				}
 			}
 		}
 	}

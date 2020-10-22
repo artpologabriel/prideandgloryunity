@@ -19,6 +19,8 @@ public class PickDrag : MonoBehaviour
 
 	public bool Moving = false;
 
+	
+
 	void OnMouseDown(){
 		GameObject C = GameObject.FindWithTag("ActiveCamera");
 		Camera ActiveCamera = C.GetComponent<Camera>();
@@ -37,6 +39,7 @@ public class PickDrag : MonoBehaviour
 	//	M.SendMessage("SendDataToSocket", data);
 		
 		Moving = false;
+		EnableCameraPan();
 	}
 	
 	void OnMouseDrag(){
@@ -47,7 +50,9 @@ public class PickDrag : MonoBehaviour
 		//Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, screenPoint.y, Input.mousePosition.z);
 		Vector3 curPosition = ActiveCamera.ScreenToWorldPoint (curScreenPoint);// &#43; offset;
 		transform.TransformPoint(Vector3.zero);
-		transform.position = curPosition;		
+		transform.position = curPosition;
+
+		DisableCameraPan();
 	}
 
 
@@ -58,5 +63,15 @@ public class PickDrag : MonoBehaviour
 		
 	} 
 
+	void EnableCameraPan(){
+		GameObject C = GameObject.FindWithTag("ActiveCamera");
+		C.GetComponent<CameraHandler>().enabled = true;
+	}
+
+	void DisableCameraPan(){
+		GameObject C = GameObject.FindWithTag("ActiveCamera");
+		C.GetComponent<CameraHandler>().enabled = false;
+		C.SendMessage("FollowObjectNow", gameObject.name);		
+	}
 	
 }

@@ -65,13 +65,17 @@
      <Compile Include="Assets\PrideAndGlory\Scripts\CameraHandler.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\CamTileDistance.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\CastleRenderer.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\customGrid.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Deo\D_chatScript.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Deo\TabButton.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Deo\TabGroup.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Empty_Tiles.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\FollowObject.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\GetDeviceID.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Grid.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\GridPlacement.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Main.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\Map.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\mapDragZoom.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\MapQuad.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\MapTiles.cs" />
@@ -87,6 +91,9 @@
      <Compile Include="Assets\PrideAndGlory\Scripts\SliderObj.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\TargetObjs.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\TaskManager.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\Teleport.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\TelePort3DButton.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\TileHide.cs" />
      <Compile Include="Assets\SocketIO\JSONObject\JSONObject.cs" />
      <Compile Include="Assets\SocketIO\JSONObject\JSONTemplates.cs" />
      <Compile Include="Assets\SocketIO\JSONObject\VectorTemplates.cs" />

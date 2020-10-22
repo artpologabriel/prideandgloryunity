@@ -63,6 +63,7 @@ public class Main : MonoBehaviour
         //TextInfo.text = DeviceID;
         StartCoroutine(CheckServerInit());
         Debug.Log("Initializing");
+        EnableGameObj("Canvas_MenuIcon");
     }
 
     IEnumerator CheckServerInit(){
@@ -162,11 +163,11 @@ public class Main : MonoBehaviour
 
     void EnableGameObj(string ObjName){
             
-            if(ObjName != "Canvas_Menu"){
-            for(int i=0; i < Canvases.Length ; i++){                
-                    Canvases[i].SetActive(false);                
-            }
-        }                        
+            if(ObjName != "Canvas_MenuIcon"){
+                for(int i=0; i < Canvases.Length ; i++){                
+                        Canvases[i].SetActive(false);                
+                }
+            }                        
             
             for(int i=0; i < Canvases.Length ; i++){
                 if(Canvases[i].name == ObjName){
