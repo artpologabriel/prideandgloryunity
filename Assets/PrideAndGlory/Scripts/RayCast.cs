@@ -23,7 +23,7 @@ public class RayCast : MonoBehaviour {
 				Debug.Log("hitpoint" + hit.point);
 				if(h.name != "Map"){
 					GameObject Map = GameObject.FindWithTag("Map");
-					Map.SendMessage("HideTiles");
+					//Map.SendMessage("HideTiles");
 				}
 			}
 		}

@@ -94,6 +94,8 @@
      <Compile Include="Assets\PrideAndGlory\Scripts\TaskManager.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Teleport.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\TelePort3DButton.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\TeleportImaginenaryCastle.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\TeleportOptionButton.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\TileHide.cs" />
      <Compile Include="Assets\SimpleSQL\Demos\Scripts\01_SimpleQuery\SimpleQuery.cs" />
      <Compile Include="Assets\SimpleSQL\Demos\Scripts\02_ComplexQuery\ComplexQuery.cs" />

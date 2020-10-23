@@ -19,7 +19,7 @@ public class PickDrag : MonoBehaviour
 
 	public bool Moving = false;
 
-	
+	public string CameraFollowObj;
 
 	void OnMouseDown(){
 		GameObject C = GameObject.FindWithTag("ActiveCamera");
@@ -71,7 +71,7 @@ public class PickDrag : MonoBehaviour
 	void DisableCameraPan(){
 		GameObject C = GameObject.FindWithTag("ActiveCamera");
 		C.GetComponent<CameraHandler>().enabled = false;
-		C.SendMessage("FollowObjectNow", gameObject.name);		
+		C.SendMessage("FollowObjectNow", CameraFollowObj);		
 	}
 	
 }

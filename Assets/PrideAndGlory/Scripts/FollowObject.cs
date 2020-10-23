@@ -11,7 +11,7 @@ public class FollowObject : MonoBehaviour
     public GameObject targetGameObj;
     // Start is called before the first frame update
     void FollowObjectNow(string ObjName){
-        GameObject Obj =GameObject.Find("CamStartPoint");
+        GameObject Obj =GameObject.Find(ObjName);
         targetGameObj = Obj; 
         follow = true;
         StartCoroutine(StopFollow());

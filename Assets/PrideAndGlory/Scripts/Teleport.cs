@@ -8,6 +8,7 @@ public class Teleport : MonoBehaviour
     public bool Move =false;
     public float speed = 1f;
 
+
     // Update is called once per frame
     void Update()
     {
@@ -19,10 +20,10 @@ public class Teleport : MonoBehaviour
     }
 
     public void TeleportNow(){
-        GameObject tile = GameObject.Find("Tile");
+        GameObject tile = GameObject.Find("Imaginary_CastleHolder");
         targetGameObj = tile;
         Move  = true;
-        StartCoroutine(UnMove());
+        StartCoroutine(UnMove());        
     }
 
     IEnumerator UnMove(){
