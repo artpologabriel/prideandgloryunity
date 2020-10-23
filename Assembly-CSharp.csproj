@@ -67,6 +67,7 @@
      <Compile Include="Assets\PrideAndGlory\Scripts\CastleRenderer.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\customGrid.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Deo\D_chatScript.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\Deo\SpriteAnimation.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Deo\TabButton.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Deo\TabGroup.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Empty_Tiles.cs" />
@@ -94,6 +95,25 @@
      <Compile Include="Assets\PrideAndGlory\Scripts\Teleport.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\TelePort3DButton.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\TileHide.cs" />
+     <Compile Include="Assets\SimpleSQL\Demos\Scripts\01_SimpleQuery\SimpleQuery.cs" />
+     <Compile Include="Assets\SimpleSQL\Demos\Scripts\02_ComplexQuery\ComplexQuery.cs" />
+     <Compile Include="Assets\SimpleSQL\Demos\Scripts\03_Insert\InsertCommand.cs" />
+     <Compile Include="Assets\SimpleSQL\Demos\Scripts\04_UpdateDelete\UpdateDeleteCommand.cs" />
+     <Compile Include="Assets\SimpleSQL\Demos\Scripts\05_CreateAlterAndDropTable\CreateAlterAndDropTable.cs" />
+     <Compile Include="Assets\SimpleSQL\Demos\Scripts\06_SimpleTable\SimpleTable.cs" />
+     <Compile Include="Assets\SimpleSQL\Demos\Scripts\07_Blobs\BlobImage.cs" />
+     <Compile Include="Assets\SimpleSQL\Demos\Scripts\07_Blobs\Blobs.cs" />
+     <Compile Include="Assets\SimpleSQL\Demos\Scripts\08_FullTextSearch\FullTextSearch.cs" />
+     <Compile Include="Assets\SimpleSQL\Demos\Scripts\09_AttachDatabase\AttachDatabase.cs" />
+     <Compile Include="Assets\SimpleSQL\Demos\Scripts\BlobData\Images.cs" />
+     <Compile Include="Assets\SimpleSQL\Demos\Scripts\Fantasy Data\Location.cs" />
+     <Compile Include="Assets\SimpleSQL\Demos\Scripts\Fantasy Data\Weapon.cs" />
+     <Compile Include="Assets\SimpleSQL\Demos\Scripts\FullTextSearchData\Post.cs" />
+     <Compile Include="Assets\SimpleSQL\Demos\Scripts\MainMenu.cs" />
+     <Compile Include="Assets\SimpleSQL\Demos\Scripts\MainMenuButton.cs" />
+     <Compile Include="Assets\SimpleSQL\Demos\Scripts\SciFi Data\PlayerStats.cs" />
+     <Compile Include="Assets\SimpleSQL\Demos\Scripts\SciFi Data\StarShip.cs" />
+     <Compile Include="Assets\SimpleSQL\Demos\Scripts\UpdateRecord.cs" />
      <Compile Include="Assets\SocketIO\JSONObject\JSONObject.cs" />
      <Compile Include="Assets\SocketIO\JSONObject\JSONTemplates.cs" />
      <Compile Include="Assets\SocketIO\JSONObject\VectorTemplates.cs" />
@@ -187,8 +207,10 @@
      <Compile Include="Assets\UniWebView\Script\UniWebViewToolbarPosition.cs" />
      <Compile Include="Assets\UniWebView\Script\UniWebViewTransitionEdge.cs" />
      <None Include="Assets\SocketIO\JSONObject\readme.txt" />
+     <None Include="Assets\SimpleSQL\readme.txt" />
      <None Include="Assets\UniWebView\README.txt" />
      <None Include="Assets\SocketIO\Readme.txt" />
+     <None Include="Assets\SimpleSQL\Documentation\Changelog.txt" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>/Users/arturogabriel/Documents/2020/E_ART_TECH/Pride_And_Glory/PrideAndGloryLatest/PrideAndGlory/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
@@ -386,6 +408,9 @@
  </Reference>
  <Reference Include="UnityEngine.XRModule">
  <HintPath>/Volumes/ARTPOLOGABR/Applications/Unity-2019-2-8/Unity.app/Contents/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
+ </Reference>
+ <Reference Include="SimpleSQL_Runtime">
+ <HintPath>/Users/arturogabriel/Documents/2020/E_ART_TECH/Pride_And_Glory/PrideAndGloryLatest/PrideAndGlory/Assets/SimpleSQL/Plugins/SimpleSQL_Runtime.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Volumes/ARTPOLOGABR/Applications/Unity-2019-2-8/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

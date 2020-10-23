@@ -56,7 +56,8 @@ public class NetworkController : MonoBehaviour
              Main.SendMessage("InitFromServer");
         }else{
             GameObject Obj = GameObject.Find(receiverObj);
-            Obj.SendMessage(action, data);
+            Obj.SendMessage(action, data, SendMessageOptions.DontRequireReceiver);
+            //Obj.SendMessage("GotHit", null, SendMessageOptions.DontRequireReceiver);	
         }
         
 

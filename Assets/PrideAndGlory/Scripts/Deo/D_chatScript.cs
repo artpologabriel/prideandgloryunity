@@ -15,7 +15,7 @@ public class D_chatScript : MonoBehaviour
     string messages ="";
     public InputField chatBox;
     public Color playerMessage, info;
-    string InitCredential = Main.InitCredential;
+    string InitCredential;
 
 
     List<Message> messageList = new List<Message>();
@@ -29,43 +29,48 @@ public class D_chatScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    public void sendM()
+    {
+
         if (chatBox.text != "")
         {
-            if (Input.GetKeyDown(KeyCode.Return))
+            InitCredential = Main.InitCredential;
+            Debug.Log(InitCredential);
+            messages = chatBox.text;
+            GameObject M = GameObject.FindWithTag("Main");
+            string data = "action:chatObj,receiverObj:" + gameObject.name + ",message:" + chatBox.text + " : " + InitCredential;
+            Debug.Log(data);
+
+            if (M != null)
             {
-
-                Debug.Log(InitCredential);
-                messages = chatBox.text;
-                GameObject M = GameObject.FindWithTag("Main");
-                string data = "action:chatObj,receiverObj:" + gameObject.name + ",message:"+ chatBox.text+" : "+InitCredential;
-                Debug.Log(data);
-
-                if(M != null){
-                    M.SendMessage("SendDataToSocket", data);
-                }else{
-                    MainObj.SendMessage("SendDataToSocket", data);
-                }
-
-                SendMessageToChat(messages, Message.MessaType.playerMessage);
-                chatBox.text = "";
+                M.SendMessage("SendDataToSocket", data);
             }
-
+            else
+            {
+                MainObj.SendMessage("SendDataToSocket", data);
+            }
+            chatBox.text = "";
         }
-        else {
-            if (!chatBox.isFocused && Input.GetKeyDown(KeyCode.Return)) {
+        else
+        {
+            if (!chatBox.isFocused && Input.GetKeyDown(KeyCode.Return))
+            {
                 chatBox.ActivateInputField();
             }
         }
 
-       
+
     }
 
     void chatObj(string data)
     {
         var N = JSON.Parse(data);
         var mess = N["message"].Value;
+        SendMessageToChat(mess, Message.MessaType.playerMessage);
         Debug.Log("Here Deo" + mess);
-
         messages = mess;
     }
 
