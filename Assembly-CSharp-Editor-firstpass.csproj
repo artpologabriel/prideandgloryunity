@@ -296,11 +296,11 @@
  <Reference Include="UnityEditor.iOS.Extensions">
  <HintPath>/Volumes/ARTPOLOGABR/Applications/Unity-2019-2-8/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll</HintPath>
  </Reference>
- <Reference Include="SimpleSQL_Editor">
- <HintPath>/Users/arturogabriel/Documents/2020/E_ART_TECH/Pride_And_Glory/PrideAndGloryLatest/PrideAndGlory/Assets/SimpleSQL/Editor/SimpleSQL_Editor.dll</HintPath>
- </Reference>
  <Reference Include="SimpleSQL_Runtime">
  <HintPath>/Users/arturogabriel/Documents/2020/E_ART_TECH/Pride_And_Glory/PrideAndGloryLatest/PrideAndGlory/Assets/SimpleSQL/Plugins/SimpleSQL_Runtime.dll</HintPath>
+ </Reference>
+ <Reference Include="SimpleSQL_Editor">
+ <HintPath>/Users/arturogabriel/Documents/2020/E_ART_TECH/Pride_And_Glory/PrideAndGloryLatest/PrideAndGlory/Assets/SimpleSQL/Editor/SimpleSQL_Editor.dll</HintPath>
  </Reference>
  <Reference Include="nunit.framework">
  <HintPath>/Users/arturogabriel/Documents/2020/E_ART_TECH/Pride_And_Glory/PrideAndGloryLatest/PrideAndGlory/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>

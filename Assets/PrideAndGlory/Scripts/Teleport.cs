@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using SimpleJSON;
 
 public class Teleport : MonoBehaviour
 {
     public GameObject targetGameObj;
     public bool Move =false;
     public float speed = 1f;
-
+    public float yP = .5f;
+    public Text MapPositionText;
 
     // Update is called once per frame
     void Update()
@@ -30,4 +33,28 @@ public class Teleport : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Move = false;
     }
+
+    public void MapPosition(string data){        
+        var N = JSON.Parse(data);
+        Debug.Log(N);     
+        string xPos = N["data"]["map_position"][0]["x_pos"].Value; 
+        string zPos = N["data"]["map_position"][0]["z_pos"].Value; 
+        Debug.Log("xzpos" + xPos + zPos);
+        
+        float xP = float.Parse(xPos);
+        float zP = float.Parse(zPos); 
+        transform.position = new Vector3(xP, yP, zP);
+        
+        Debug.Log("MapPosition");
+
+        GameObject Cam = GameObject.FindWithTag("ActiveCamera");
+        Cam.SendMessage("GoBack");
+        MapPositionText.text = "x:"+xPos+"  : y:"+zPos;
+
+
+       
+
+    }
+
+
 }

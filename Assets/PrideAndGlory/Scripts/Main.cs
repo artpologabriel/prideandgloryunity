@@ -1,11 +1,12 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 using SimpleJSON;
 using System.IO;
-
+using System;
 
 
 [System.Serializable]
@@ -14,6 +15,7 @@ public class Main : MonoBehaviour
     public static Main instance = null;
     public GameObject[] Canvases;
 
+    public static string PlayerConfig;
     public static string InitCredential;    
     public static string username;
     public static string email;
@@ -30,6 +32,15 @@ public class Main : MonoBehaviour
 
     public GameObject NetworkController;
 
+
+    public string JSONFileName = "-pag.json";
+    private bool isWriting;
+    private static string MarksDirectory;
+    public bool writingJson = false;
+    public bool completed = false;
+
+
+
     void Awake()
         {
             if(instance == null){
@@ -38,6 +49,25 @@ public class Main : MonoBehaviour
                 Destroy(gameObject);
             }
 
+            #if UNITY_ANDROID && !UNITY_EDITOR
+            using (var unityPlayerClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+            using (var currentActivity = unityPlayerClass.GetStatic<AndroidJavaObject>("currentActivity"))
+            using (var file = currentActivity.Call<AndroidJavaObject>("getFilesDir"))
+            {
+                MarksDirectory = file.Call<string>("getAbsolutePath");
+                Debug.Log("MarkPath:" + MarksDirectory);
+                Debug.Log("MarkPath:" + Application.persistentDataPath);
+            }
+        #else
+            MarksDirectory = Application.persistentDataPath;
+        #endif
+
+        if (!Directory.Exists(MarksDirectory)){
+            Directory.CreateDirectory(MarksDirectory);
+        }
+
+
+
             string theTime = System.DateTime.Now.ToString("hh:mm:ss"); 
             string theDate = System.DateTime.Now.ToString("MM/dd/yyyy"); 
 
@@ -45,10 +75,12 @@ public class Main : MonoBehaviour
             Debug.Log(theTime + "-" +theDate );
 
             
-            if(!checkCredential()){
-                InitCredential = Md5Sum(theDate + theTime);
+            if(!checkCredential()){                               
+                StartCoroutine(PostContentsFromServer());
             } else{
                 InitCredential = PlayerPrefs.GetString("InitCredential");
+                Debug.Log(InitCredential);
+                StartCoroutine(GetContentsFromServer(InitCredential));
             }
             
             
@@ -61,10 +93,38 @@ public class Main : MonoBehaviour
        // StartCoroutine(CloseWelcomPanel());
         //checkCredential();
         //TextInfo.text = DeviceID;
-        StartCoroutine(CheckServerInit());
+        //StartCoroutine(CheckServerInit());
         Debug.Log("Initializing");
-       EnableGameObj("Canvas_MenuIcon");
+       //EnableGameObj("Canvas_MenuIcon");
     }
+
+
+
+    private void ParseJsonData(string the_JSON_string){
+
+                Debug.Log(the_JSON_string);
+                var N = JSON.Parse(the_JSON_string); 
+                //Debug.Log(TextureData);
+                InitCredential = N["user"]["_id"].Value; 
+                PlayerPrefs.SetString("InitCredential", InitCredential);
+                Debug.Log(InitCredential);
+                if(!completed){                
+                // Information.text = "Processing game";
+                //Debug.Log(N["textures"]);                                   
+                //GameTitle = N["g_title"].Value;
+                GameObject CH = GameObject.FindWithTag("Castle_Holder");
+                CH.SendMessage("MapPosition",N.ToString());
+
+                GameObject CC = GameObject.FindWithTag("Castle_Holder");
+                CC.SendMessage("SetLevel",N.ToString());
+
+                }else{
+                   
+                }
+        }
+
+
+
 
     IEnumerator CheckServerInit(){
         yield return new WaitForSeconds(.5f);
@@ -123,12 +183,11 @@ public class Main : MonoBehaviour
 
     public void SendPingToSocket(){
 
-        float rn = Random.Range(1.0f,1000.0f);
+        float rn = 1234f;
         string data = "{action:ping, randomNumber:"+ rn.ToString() +"}";        
         NetworkController.SendMessage("SendDataToSocket",data);
         Debug.Log(data);
 
-        
 
     }
 
@@ -144,13 +203,13 @@ public class Main : MonoBehaviour
        // listObjVal.Add(new ListObjectAndValue("Text_MenuAddress", "Manchester, USA", 2));
 
         if(InitCredential == ""){
-                   // Debug.Log("not login");
+                    Debug.Log("not login");
                     //EnableGameObj("Canvas_Auth");
                     return false;
         }else{
                   
                   return true;
-                   // Debug.Log("logged in");
+                    Debug.Log("logged in");
                     //EnableGameObj("Canvas_Dashboard");
         }
         //Debug.Log(PlayerPrefs.GetString("Token"));
@@ -259,5 +318,92 @@ public class Main : MonoBehaviour
         return hashString.PadLeft(32, '0');
     }
 
+     IEnumerator PostContentsFromServer() {
 
+         string url = "http://3.135.231.84/user";
+              
+        // Create a Web Form
+        WWWForm form = new WWWForm();
+        form.AddField("", "");
+        using (UnityWebRequest w = UnityWebRequest.Post(url, form))
+        {
+            yield return w.Send();
+            if (w.isNetworkError)
+            {
+ 
+            }
+            else
+            {                
+                                                                             
+                Debug.Log(w.downloadHandler.text);
+                string txt = w.downloadHandler.text.ToString(); 
+                byte[] data = w.downloadHandler.data;
+                PlayerPrefs.SetString("PlayerConfig", txt); 
+                var N = JSON.Parse(txt);                             
+                var id = N["user"]["_id"].Value;
+                InitCredential = id; 
+                ParseJsonData(txt);
+
+            }
+        }
+    }
+
+
+    IEnumerator GetContentsFromServer(string id) {
+
+         string url = "http://3.135.231.84/userdata/" + id;
+              
+
+        // Create a Web Form                
+        using (UnityWebRequest w = UnityWebRequest.Get(url))
+        {
+            yield return w.Send();
+            if (w.isNetworkError)
+            {
+
+            }
+            else
+            {                
+                                                                             
+                Debug.Log(w.downloadHandler.text);
+                string txt = w.downloadHandler.text.ToString(); 
+                byte[] data = w.downloadHandler.data;
+                
+                var N = JSON.Parse(txt);                             
+                var newId = N["user"]["_id"].Value; 
+                if(id == newId){
+                    PlayerPrefs.SetString("PlayerConfig", txt);
+                    ParseJsonData(txt);
+                }                                        
+            }
+        }
+    }
+
+
+ 
+
+      IEnumerator Post(string url, string bodyJsonString)
+        {
+            var request = new UnityWebRequest(url, "GET");
+            byte[] bodyRaw = new System.Text.UTF8Encoding().GetBytes(bodyJsonString);
+            request.uploadHandler = (UploadHandler) new UploadHandlerRaw(bodyRaw);
+            request.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();
+            request.SetRequestHeader("Content-Type", "application/json");
+            yield return request.SendWebRequest();
+            //Debug.Log("Status Code: " + request.responseCode);
+           // Debug.Log(request.downloadHandler.text);
+           //ParseDataJson(request.downloadHandler.text);
+           //ParseDataJsonSupplier(request.downloadHandler.text);
+            //System.IO.File.WriteAllText("C:\blahblah_yourfilepath\yourtextfile.txt", request.downloadHandler.text);   
+           // res = JsonUtility.FromJson<LibraryListResponse>(request.downloadHandler.text);
+            //Debug.Log(res.id + res.name + res.username);
+
+
+            //print("Finished Uploading Image" + imageNum);
+                    //Debug.Log(w.downloadHandler.text);
+                   
+        }
+
+
+    
 }
