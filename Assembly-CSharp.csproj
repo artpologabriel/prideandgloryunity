@@ -66,6 +66,7 @@
      <Compile Include="Assets\PrideAndGlory\Scripts\CamTileDistance.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\CastleRenderer.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\customGrid.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\Deo\CastleController.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Deo\D_chatScript.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Deo\D_Menu\CloseTab.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Deo\SpriteAnimation.cs" />

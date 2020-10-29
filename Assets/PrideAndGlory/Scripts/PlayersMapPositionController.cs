@@ -7,6 +7,8 @@ public class PlayersMapPositionController : MonoBehaviour
 {
     
     public GameObject PlayerPosition;
+    public GameObject CastleController;
+
     public float height = .5f;
    
     public void SetPlayersPosition(string data){
@@ -24,6 +26,9 @@ public class PlayersMapPositionController : MonoBehaviour
                             GameObject Obj = Instantiate(PlayerPosition) as GameObject;
                             Obj.name = "castle_point-"+id;
                             Obj.transform.position = new Vector3(x_pos, height, z_pos);
+                            GameObject Castle = Instantiate(CastleController) as GameObject;
+                            Castle.name = "castle-"+id;
+                            Castle.transform.parent = Obj.transform;
                         }                                                
                     }   
                 }

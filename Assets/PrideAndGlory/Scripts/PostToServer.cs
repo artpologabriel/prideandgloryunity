@@ -11,6 +11,7 @@ public class PostToServer : MonoBehaviour
     
 
     public void PostDataToServer(string data){
+        
         StartCoroutine(Post(data));
     }
 
@@ -18,8 +19,10 @@ public class PostToServer : MonoBehaviour
     IEnumerator Post(string data)
         {
             string txt = JsonMaker(data);
-            var N = JSON.Parse(txt);                                         
-            string url = N["url"].Value; 
+            Debug.Log(txt);
+            var N = JSON.Parse(txt); 
+                                                    
+            string url = Main.ServerUrl + N["route"].Value; 
             Debug.Log("url to post+"+ url);
 
 

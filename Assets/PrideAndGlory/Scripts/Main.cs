@@ -42,7 +42,7 @@ public class Main : MonoBehaviour
     public bool writingJson = false;
     public bool completed = false;
 
-
+    public bool createNewPlayer = false;
 
     void Awake()
         {
@@ -79,17 +79,21 @@ public class Main : MonoBehaviour
 
             Debug.Log(theTime + "-" +theDate );
 
-            
-            if(!checkCredential()){                               
-                StartCoroutine(PostContentsFromServer());
-            } else{
-                InitCredential = PlayerPrefs.GetString("InitCredential");
-                Debug.Log(InitCredential);
-                string url = ServerUrl + "userdata";
-                StartCoroutine(GetContentsFromServer(url,InitCredential,"ParseJsonData"));
+            if(createNewPlayer){
+                 StartCoroutine(PostContentsFromServer());
+            }else{
+                        if(!checkCredential()){                               
+                        StartCoroutine(PostContentsFromServer());
+                    } else{
+                        InitCredential = PlayerPrefs.GetString("InitCredential");
+                        Debug.Log(InitCredential);
+                        string url = ServerUrl + "userdata";
+                        StartCoroutine(GetContentsFromServer(url,InitCredential,"ParseJsonData"));
+                    }
             }
             
             
+           
         }
 
     
@@ -99,7 +103,7 @@ public class Main : MonoBehaviour
        // StartCoroutine(CloseWelcomPanel());
         //checkCredential();
         //TextInfo.text = DeviceID;
-        StartCoroutine(CheckServerInit());
+        
         Debug.Log("Initializing");
        //EnableGameObj("Canvas_MenuIcon");
     }
@@ -114,6 +118,9 @@ public class Main : MonoBehaviour
                 InitCredential = N["user"]["_id"].Value; 
                 PlayerPrefs.SetString("InitCredential", InitCredential);
                 Debug.Log(InitCredential);
+
+                StartCoroutine(CheckServerInit());
+
                 if(!completed){                
 
                 GameObject CH = GameObject.FindWithTag("Castle_Holder");
@@ -342,7 +349,8 @@ public class Main : MonoBehaviour
                 var N = JSON.Parse(txt);                             
                 var id = N["user"]["_id"].Value;
                 InitCredential = id; 
-                ParseJsonData(txt);
+                //ParseJsonData(txt);
+                StartCoroutine(GetContentsFromServer("",InitCredential,"ParseJsonData"));
             }
         }
     }
@@ -350,7 +358,7 @@ public class Main : MonoBehaviour
 
     IEnumerator GetContentsFromServer(string url, string id, string functionName) {
          
-        string urldata = url + "/"+ id;      
+        string urldata = ServerUrl + "userdata/"+ id;      
         Debug.Log(urldata);
         // Create a Web Form                
         using (UnityWebRequest w = UnityWebRequest.Get(urldata))
@@ -362,7 +370,7 @@ public class Main : MonoBehaviour
             }
             else
             {                                                                                             
-               // Debug.Log(w.downloadHandler.text);
+                Debug.Log(w.downloadHandler.text);
                 string txt = w.downloadHandler.text.ToString(); 
                 //byte[] data = w.downloadHandler.data;
                 
@@ -371,7 +379,6 @@ public class Main : MonoBehaviour
                
                if(functionName == "ParseJsonData"){
                    if(id == newId){
-                        PlayerPrefs.SetString("PlayerConfig", txt);
                         ParseJsonData(txt);
                     } 
                }
