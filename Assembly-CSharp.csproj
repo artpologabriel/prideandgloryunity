@@ -67,11 +67,13 @@
      <Compile Include="Assets\PrideAndGlory\Scripts\CastleRenderer.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\customGrid.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Deo\D_chatScript.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\Deo\D_Menu\CloseTab.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Deo\SpriteAnimation.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Deo\TabButton.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Deo\TabGroup.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Empty_Tiles.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\FollowObject.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\GetContentsFromServer.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\GetDeviceID.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Grid.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\GridPlacement.cs" />
@@ -80,10 +82,13 @@
      <Compile Include="Assets\PrideAndGlory\Scripts\mapDragZoom.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\MapQuad.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\MapTiles.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\MyCastle.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\NetworkController.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\NetWorkControllerPort.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\PickDrag.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\PlayersMapPositionController.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\PlayObject.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\PostToServer.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\RadialFill.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\RadialProgress.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\RayCast.cs" />

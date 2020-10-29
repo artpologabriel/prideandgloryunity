@@ -21,6 +21,9 @@ public class Main : MonoBehaviour
     public static string email;
     public static string pass;
     public static string token;
+    public static string ServerUrl;
+
+    public string serverURL;
 
     public static string myData;
 
@@ -43,6 +46,8 @@ public class Main : MonoBehaviour
 
     void Awake()
         {
+            ServerUrl = serverURL;
+
             if(instance == null){
                 instance = this;
             } else if (instance !=this){
@@ -80,7 +85,8 @@ public class Main : MonoBehaviour
             } else{
                 InitCredential = PlayerPrefs.GetString("InitCredential");
                 Debug.Log(InitCredential);
-                StartCoroutine(GetContentsFromServer(InitCredential));
+                string url = ServerUrl + "userdata";
+                StartCoroutine(GetContentsFromServer(url,InitCredential,"ParseJsonData"));
             }
             
             
@@ -93,7 +99,7 @@ public class Main : MonoBehaviour
        // StartCoroutine(CloseWelcomPanel());
         //checkCredential();
         //TextInfo.text = DeviceID;
-        //StartCoroutine(CheckServerInit());
+        StartCoroutine(CheckServerInit());
         Debug.Log("Initializing");
        //EnableGameObj("Canvas_MenuIcon");
     }
@@ -109,14 +115,12 @@ public class Main : MonoBehaviour
                 PlayerPrefs.SetString("InitCredential", InitCredential);
                 Debug.Log(InitCredential);
                 if(!completed){                
-                // Information.text = "Processing game";
-                //Debug.Log(N["textures"]);                                   
-                //GameTitle = N["g_title"].Value;
+
                 GameObject CH = GameObject.FindWithTag("Castle_Holder");
                 CH.SendMessage("MapPosition",N.ToString());
 
                 GameObject CC = GameObject.FindWithTag("Castle_Holder");
-                CC.SendMessage("SetLevel",N.ToString());
+                //CC.SendMessage("SetLevel",N.ToString());
 
                 }else{
                    
@@ -319,10 +323,7 @@ public class Main : MonoBehaviour
     }
 
      IEnumerator PostContentsFromServer() {
-
-         string url = "http://3.135.231.84/user";
-              
-        // Create a Web Form
+         string url = ServerUrl + "user";
         WWWForm form = new WWWForm();
         form.AddField("", "");
         using (UnityWebRequest w = UnityWebRequest.Post(url, form))
@@ -333,8 +334,7 @@ public class Main : MonoBehaviour
  
             }
             else
-            {                
-                                                                             
+            {                                                                                             
                 Debug.Log(w.downloadHandler.text);
                 string txt = w.downloadHandler.text.ToString(); 
                 byte[] data = w.downloadHandler.data;
@@ -343,19 +343,17 @@ public class Main : MonoBehaviour
                 var id = N["user"]["_id"].Value;
                 InitCredential = id; 
                 ParseJsonData(txt);
-
             }
         }
     }
 
 
-    IEnumerator GetContentsFromServer(string id) {
-
-         string url = "http://3.135.231.84/userdata/" + id;
-              
-
+    IEnumerator GetContentsFromServer(string url, string id, string functionName) {
+         
+        string urldata = url + "/"+ id;      
+        Debug.Log(urldata);
         // Create a Web Form                
-        using (UnityWebRequest w = UnityWebRequest.Get(url))
+        using (UnityWebRequest w = UnityWebRequest.Get(urldata))
         {
             yield return w.Send();
             if (w.isNetworkError)
@@ -363,35 +361,42 @@ public class Main : MonoBehaviour
 
             }
             else
-            {                
-                                                                             
-                Debug.Log(w.downloadHandler.text);
+            {                                                                                             
+               // Debug.Log(w.downloadHandler.text);
                 string txt = w.downloadHandler.text.ToString(); 
-                byte[] data = w.downloadHandler.data;
+                //byte[] data = w.downloadHandler.data;
                 
                 var N = JSON.Parse(txt);                             
                 var newId = N["user"]["_id"].Value; 
-                if(id == newId){
-                    PlayerPrefs.SetString("PlayerConfig", txt);
-                    ParseJsonData(txt);
-                }                                        
+               
+               if(functionName == "ParseJsonData"){
+                   if(id == newId){
+                        PlayerPrefs.SetString("PlayerConfig", txt);
+                        ParseJsonData(txt);
+                    } 
+               }
+               
+                                                       
             }
         }
     }
 
 
- 
+       void PostData(string url, string body){
+           StartCoroutine(Post(url,body));
+       } 
 
       IEnumerator Post(string url, string bodyJsonString)
         {
-            var request = new UnityWebRequest(url, "GET");
-            byte[] bodyRaw = new System.Text.UTF8Encoding().GetBytes(bodyJsonString);
+            string JsonBody = JsonMaker(bodyJsonString);
+            var request = new UnityWebRequest(url, "POST");
+            byte[] bodyRaw = new System.Text.UTF8Encoding().GetBytes(JsonBody);
             request.uploadHandler = (UploadHandler) new UploadHandlerRaw(bodyRaw);
             request.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type", "application/json");
             yield return request.SendWebRequest();
-            //Debug.Log("Status Code: " + request.responseCode);
-           // Debug.Log(request.downloadHandler.text);
+            Debug.Log("Status Code: " + request.responseCode);
+            Debug.Log(request.downloadHandler.text);
            //ParseDataJson(request.downloadHandler.text);
            //ParseDataJsonSupplier(request.downloadHandler.text);
             //System.IO.File.WriteAllText("C:\blahblah_yourfilepath\yourtextfile.txt", request.downloadHandler.text);   
@@ -405,5 +410,6 @@ public class Main : MonoBehaviour
         }
 
 
+       
     
 }

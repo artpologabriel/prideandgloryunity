@@ -32,6 +32,7 @@ public class Teleport : MonoBehaviour
     IEnumerator UnMove(){
         yield return new WaitForSeconds(1f);
         Move = false;
+        SaveNewPosition();
     }
 
     public void MapPosition(string data){        
@@ -50,11 +51,20 @@ public class Teleport : MonoBehaviour
         GameObject Cam = GameObject.FindWithTag("ActiveCamera");
         Cam.SendMessage("GoBack");
         MapPositionText.text = "x:"+xPos+"  : y:"+zPos;
+    }
 
-
-       
+    void SaveNewPosition(){
+        float xP = transform.position.x;
+        float zP = transform.position.z;
+        GameObject M = GameObject.FindWithTag("Main");
+        string castleName = "castle-"+Main.InitCredential;
+        string data = "action:MapLocation,id:"+Main.InitCredential+",receiverObj:"+castleName+", x_pos:"+xP + ",z_pos:"+zP;
+        M.SendMessage("SendDataToSocket", data);
+        string postData = "url:"+Main.ServerUrl+"teleport"+",action:MapLocation,id:"+Main.InitCredential+",receiverObj:"+castleName+", x_pos:"+xP + ",z_pos:"+zP;
 
     }
+
+
 
 
 }
