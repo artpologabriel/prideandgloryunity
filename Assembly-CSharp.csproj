@@ -61,6 +61,7 @@
      <Compile Include="Assets\PrideAndGlory\Scripts\ButtonClose.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\ButtonOpen.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\ButtonOpenClose.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\CameraControl.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\CameraDragZoom.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\CameraHandler.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\CamTileDistance.cs" />

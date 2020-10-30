@@ -3,6 +3,8 @@ using System.Collections;
 
 public class CameraHandler : MonoBehaviour {
 
+    public GameObject myCastleHolder;
+
     private static readonly float PanSpeed = 20f;
     private static readonly float ZoomSpeedTouch = 0.1f;
     private static readonly float ZoomSpeedMouse = 0.5f;
@@ -21,9 +23,37 @@ public class CameraHandler : MonoBehaviour {
     private bool wasZoomingLastFrame; // Touch mode only
     private Vector2[] lastZoomPositions; // Touch mode only
 
+    public float[] regionMapX = new float[]{-18f, -4f};
+    public float[] regionMapZ = new float[]{-18f, -4f};
+
+    public float[] innerMapX = new float[]{-18f, -4f};
+    public float[] innerMapZ = new float[]{-18f, -4f};
+
+    public float[] worldMapX = new float[]{-18f, -4f};
+    public float[] worldMapZ = new float[]{-18f, -4f};
+
+
     void Awake() {
         cam = GetComponent<Camera>();
     }
+
+    public void ChangeBounds(string location){
+
+        if(location == "regionMap"){
+            BoundsX = regionMapX;
+            BoundsZ = regionMapZ;
+            gameObject.transform.position = myCastleHolder.transform.position;
+        }else if(location == "innerMap"){
+            BoundsX = innerMapX;
+            BoundsZ = innerMapZ;
+            transform.position = new Vector3(-58f,18.7f,-77f);
+        }else{
+            BoundsX = worldMapX;
+            BoundsZ = worldMapZ;
+            transform.position = new Vector3(-250f,18.7f,-250f);
+        }
+    }
+
     
     void Update() {
         if (Input.touchSupported && Application.platform != RuntimePlatform.WebGLPlayer) {

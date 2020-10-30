@@ -19,18 +19,24 @@ public class Teleport : MonoBehaviour
             float step =  speed; //* Time.deltaTime; // calculate distance to move
             transform.position = Vector3.MoveTowards(transform.position, targetGameObj.transform.position, step);
            // Debug.Log("Teleporting"+ transform.position);
-        }        
+        }
+
+            if(transform.position == targetGameObj.transform.position){
+                SaveNewPosition();
+                Move = false;
+            }
+
     }
 
     public void TeleportNow(){
         GameObject tile = GameObject.Find("Imaginary_CastleHolder");
         targetGameObj = tile;
         Move  = true;
-        StartCoroutine(UnMove());        
+       // StartCoroutine(UnMove());        
     }
 
     IEnumerator UnMove(){
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5f);
         Move = false;
         SaveNewPosition();
     }
@@ -62,12 +68,15 @@ public class Teleport : MonoBehaviour
         float zP = Mathf.Round(transform.position.z);
         GameObject M = GameObject.FindWithTag("Main");
         string castleName = "castle-"+Main.InitCredential; //this is for the other players view
+        
+        MapPositionText.text = "x:"+xP+"  : y:"+zP;
+        
         //SOCKET
-        string data = "action:MapLocation,id:"+Main.InitCredential+",receiverObj:"+castleName+", x_pos:"+xP + ",z_pos:"+zP;
-        M.SendMessage("SendDataToSocket", data);
+        string data = "action:MapLocation,u_id:"+Main.InitCredential+",receiverObj:"+castleName+",z_pos:"+zP+",x_pos:"+xP ;
+        M.SendMessage("SendDataToSocket", data);        
         
         //HTTPCALL
-        string postData = "route:teleport,action:MapLocation,u_id:"+Main.InitCredential+",receiverObj:"+castleName+", x_pos:"+xP + ",z_pos:"+zP;
+        string postData = "route:teleport,"+ data;
         gameObject.SendMessage("Post", postData);
     }
 

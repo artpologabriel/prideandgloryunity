@@ -345,7 +345,7 @@ public class Main : MonoBehaviour
                 Debug.Log(w.downloadHandler.text);
                 string txt = w.downloadHandler.text.ToString(); 
                 byte[] data = w.downloadHandler.data;
-                PlayerPrefs.SetString("PlayerConfig", txt); 
+                
                 var N = JSON.Parse(txt);                             
                 var id = N["user"]["_id"].Value;
                 InitCredential = id; 
@@ -373,7 +373,7 @@ public class Main : MonoBehaviour
                 Debug.Log(w.downloadHandler.text);
                 string txt = w.downloadHandler.text.ToString(); 
                 //byte[] data = w.downloadHandler.data;
-                
+                PlayerPrefs.SetString("PlayerConfig", txt); 
                 var N = JSON.Parse(txt);                             
                 var newId = N["user"]["_id"].Value; 
                

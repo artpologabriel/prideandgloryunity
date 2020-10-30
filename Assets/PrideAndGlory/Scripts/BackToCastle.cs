@@ -10,7 +10,7 @@ public class BackToCastle : MonoBehaviour
     public GameObject targetGameObj;
     public GameObject CanvasDistance;
     public GameObject CastleRenderer;
-    
+    public bool Quick = false;
 
     void Start()
     {
@@ -22,6 +22,11 @@ public class BackToCastle : MonoBehaviour
 
     public void GoBack(){
         Move = true;
+    }
+
+    public void GoBackQuick(){
+        Quick = true;
+        Debug.Log("GoBackQuick");
     }
 
     void OnMouseDown(){
@@ -40,12 +45,18 @@ public class BackToCastle : MonoBehaviour
     void Update()
     {
         if(Move){
+            if(Quick){
+                speed = 0.1f;
+            }else{
+                speed = 2f;
+            }
             float step =  speed; // * Time.deltaTime; // calculate distance to move
             transform.position = Vector3.MoveTowards(transform.position, targetGameObj.transform.position, step);
         }
 
         if (Input.GetMouseButtonDown (0)) {
             Move = false;
+            Quick = false;
         }
 
     }
