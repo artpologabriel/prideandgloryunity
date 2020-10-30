@@ -9,24 +9,25 @@ public class GetContentsFromServer : MonoBehaviour
 {
     
     
-    public string url;
+    
+    public string route;
     public string query;
     public string functionName;
     
     // Start is called before the first frame update
     void Start()
     {
-        string o = gameObject.name;
-        string u = url;
+        string o = gameObject.name;        
         string q = query;
         string f =functionName;
-        StartCoroutine(Get(u, q, f, o));
+        StartCoroutine(Get(q, f, o));
     }
 
-     IEnumerator Get(string url, string query, string action, string thisObj) {
+     IEnumerator Get(string query, string action, string thisObj) {
          
-        string urldata = url + query;      
-
+        //string urldata = url + query;      
+        string urldata = Main.ServerUrl + route +"/"+ query;
+        Debug.Log(gameObject.name + " : " + urldata);
         // Create a Web Form                
         using (UnityWebRequest w = UnityWebRequest.Get(urldata))
         {
