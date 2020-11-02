@@ -23,6 +23,14 @@ public class GetContentsFromServer : MonoBehaviour
         StartCoroutine(Get(q, f, o));
     }
 
+    void GetData(string data){
+        string[] n =   data.Split('-');    
+        string o = gameObject.name;       
+        string q = n[0];
+        string f = n[1];
+        StartCoroutine(Get(q, f, o));
+    }
+
      IEnumerator Get(string query, string action, string thisObj) {
          
         //string urldata = url + query;      

@@ -42,12 +42,12 @@ public class CastleController : MonoBehaviour
 
        void Awake()
         {
-            string v = gameObject.name;
-            string[] na =   v.Split('-');
 
-            string id = na[1];
+          StartCoroutine(CheckName());
 
-        StartCoroutine(GetContentsFromServer(serverURL,id));
+           
+
+       // StartCoroutine(GetContentsFromServer(serverURL,id));
 
                 // ServerUrl = serverURL;
                 // if(!checkCredential()){                               
@@ -59,6 +59,20 @@ public class CastleController : MonoBehaviour
                 //             StartCoroutine(GetContentsFromServer(url,InitCredential,"ParseJsonData"));
                 //       }
         }
+
+    IEnumerator CheckName(){
+          yield return new WaitForSeconds(.5f);
+          string v = gameObject.name;
+          string[] na =   v.Split('-');
+          string id = na[1];
+          string data = id + "-" + "RecivData";
+          gameObject.SendMessage("GetData", data);
+    }
+
+    void RecivData(string json){
+
+
+    }
 
 
       public void SetLevel(string data)
