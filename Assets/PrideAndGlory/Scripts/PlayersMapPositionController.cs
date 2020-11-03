@@ -10,6 +10,13 @@ public class PlayersMapPositionController : MonoBehaviour
     public GameObject CastleController;
 
     public float height = .5f;
+
+    void Start(){
+        string data = "usersposition"+"-"+"SetPlayersPosition";
+        gameObject.SendMessage("GetData", data);
+    }
+
+
    
     public void SetPlayersPosition(string data){
                 Debug.Log(data);
@@ -29,6 +36,9 @@ public class PlayersMapPositionController : MonoBehaviour
                             GameObject Castle = Instantiate(CastleController) as GameObject;
                             Castle.name = "castle-"+id;
                             Castle.transform.parent = Obj.transform;
+                            Castle.transform.position = Obj.transform.position;
+                            //Castle.SendMessage("SetId", id);
+                            Castle.SetActive(false);
                         }                                                
                     }   
                 }

@@ -17,13 +17,16 @@ public class GetContentsFromServer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*
         string o = gameObject.name;        
         string q = query;
         string f =functionName;
         StartCoroutine(Get(q, f, o));
+        */
     }
 
     void GetData(string data){
+        
         string[] n =   data.Split('-');    
         string o = gameObject.name;       
         string q = n[0];
@@ -35,24 +38,31 @@ public class GetContentsFromServer : MonoBehaviour
          
         //string urldata = url + query;      
         string urldata = Main.ServerUrl + route +"/"+ query;
+        //string urldata = "http://18.134.172.35/castleinfo/5fa0ca9a0a0d6c9eed1000a3";
+
+                
+                    
+                            using (UnityWebRequest w = UnityWebRequest.Get(urldata))
+                                    {
+                                        yield return w.Send();
+                                        if (w.isNetworkError)
+                                        {
+
+                                        }
+                                        else
+                                        {                                                                                             
+                                            Debug.Log(w.downloadHandler.text);
+                                            string txt = w.downloadHandler.text.ToString(); 
+                                            byte[] data = w.downloadHandler.data;
+                                            Debug.Log(action);
+                                            GameObject Obj = GameObject.Find(thisObj);
+                                            Obj.SendMessage(action, txt, SendMessageOptions.DontRequireReceiver);                                                     
+                                        }
+                                    }
+                    
+                
         Debug.Log(gameObject.name + " : " + urldata);
         // Create a Web Form                
-        using (UnityWebRequest w = UnityWebRequest.Get(urldata))
-        {
-            yield return w.Send();
-            if (w.isNetworkError)
-            {
-
-            }
-            else
-            {                                                                                             
-                Debug.Log(w.downloadHandler.text);
-                string txt = w.downloadHandler.text.ToString(); 
-                byte[] data = w.downloadHandler.data;
-                Debug.Log(action);
-                GameObject Obj = GameObject.Find(thisObj);
-                Obj.SendMessage(action, txt, SendMessageOptions.DontRequireReceiver);                                                     
-            }
-        }
+ 
     }
 }

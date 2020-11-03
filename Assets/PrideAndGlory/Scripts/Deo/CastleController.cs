@@ -13,171 +13,70 @@ public class CastleController : MonoBehaviour
 {
     // Start is called before the first frame update
       public GameObject Castle;
-      public int x;
-       public int y;
-        public int z;
-    public int lvl ;
-
+  
     [SerializeField]
     private Material[] materials;
     private MeshRenderer renderer;
+    public string myID;
 
     //playerReference
-    public static string ServerUrl;
-    public string serverURL;
-     public static string username;
-    public static string email;
-    public static string pass;
-    public static string token;
 
     public static string InitCredential;    
 
         public bool completed = false;
 
 
-      public void Start(){
       
-
+      void SetId(string Id){
+        myID = Id;
+        StartCoroutine(DisableMe());
       }
 
-       void Awake()
-        {
+    IEnumerator DisableMe(){
+      yield return new WaitForSeconds(1f);
+      gameObject.SetActive(false);
+    }  
 
-          StartCoroutine(CheckName());
+    void Enable(){
+        Debug.Log("Enabled " + gameObject.name);
+        CheckName();
+    }
 
-           
 
-       // StartCoroutine(GetContentsFromServer(serverURL,id));
-
-                // ServerUrl = serverURL;
-                // if(!checkCredential()){                               
-                //         } else{
-                //             InitCredential = PlayerPrefs.GetString("InitCredential");
-                //             Castle.name="castle-"+InitCredential;
-                //             Debug.Log(InitCredential);
-                //             string url = ServerUrl + "userdata";
-                //             StartCoroutine(GetContentsFromServer(url,InitCredential,"ParseJsonData"));
-                //       }
-        }
-
-    IEnumerator CheckName(){
-          yield return new WaitForSeconds(.5f);
-          string v = gameObject.name;
+    void CheckName(){
+          //Debug.Log("CheckName: " + id);
+          //yield return new WaitForSeconds(2f);
+          string v = gameObject.name;          
           string[] na =   v.Split('-');
           string id = na[1];
-          string data = id + "-" + "RecivData";
+          string data = id + "-" + "SetLevel";
           gameObject.SendMessage("GetData", data);
     }
 
-    void RecivData(string json){
-
-
-    }
-
-
-      public void SetLevel(string data)
+      public void SetLevel(string JsonData)
       {
-        var N = JSON.Parse(data);
-        var mess = N["SetLevel"].Value;
+            Debug.Log(JsonData);
+        var N = JSON.Parse(JsonData);
+                 var c_name =N[0]["c_level"].Value;
+                var c_level = N[0]["c_level"].Value;
+                var c_id = N[0]["_id"].Value;
+
+             Level(Int32.Parse(c_level));
+
 
       }
 
-      public void  Level(String level,String id) 
+      public void  Level(int level) 
       {     
-         Vector3 pos = new Vector3(x,y,z) ;
-        int levlCastle =  Int32.Parse(level)-1;
-        Castle.transform.position = pos;
-        Castle.name="castle-"+id;
-        
+        int levlCastle =  level-1;
         renderer = Castle.GetComponent<MeshRenderer>();
         renderer.GetComponent<MeshRenderer>().material = materials[levlCastle];
         // Instantiate(Castle,pos,Quaternion.identity);
       }
 
-    //      bool checkCredential(){
-    //     InitCredential = PlayerPrefs.GetString("InitCredential");
+   
 
-    //     email = PlayerPrefs.GetString("Email");
-    //     pass = PlayerPrefs.GetString("Pass");
-    //     token = PlayerPrefs.GetString("Token");        
+   
 
-    //    // listObjVal.Add(new ListObjectAndValue("Text_MenuName", user, 1));
-    //    // listObjVal.Add(new ListObjectAndValue("Text_MenuAddress", "Manchester, USA", 2));
-
-    //     if(InitCredential == ""){
-    //                 Debug.Log("not login");
-    //                 //EnableGameObj("Canvas_Auth");
-    //                 return false;
-    //     }else{
-                  
-    //               return true;
-    //                 Debug.Log("logged in");
-    //                 //EnableGameObj("Canvas_Dashboard");
-    //     }
-    //     //Debug.Log(PlayerPrefs.GetString("Token"));
-    // }
-
-
-      IEnumerator GetContentsFromServer(string url, string id) {
-         
-        string urldata = url + "castleInfo/"+ id;      
-        Debug.Log(urldata);
-        // Create a Web Form                
-        using (UnityWebRequest w = UnityWebRequest.Get(urldata))
-        {
-            yield return w.Send();
-            if (w.isNetworkError)
-            {
-                 Debug.Log("Deo NetworError");
-            }
-            else
-            {  
-                                                                                           
-               // Debug.Log(w.downloadHandler.text);
-                string txt = w.downloadHandler.text.ToString(); 
-                //byte[] data = w.downloadHandler.data;
-                
-                var N = JSON.Parse(txt);
-                var c_name = N["castle"]["c_name"].Value;
-                var c_level = N["castle"]["c_level"].Value;
-                var c_id = N["castle"]["_id"].Value;
-
-                Level( c_level,c_id) ;
-
-            //     var newId = N["user"]["_id"].Value; 
-            //    if(functionName == "ParseJsonData"){
-            //        if(id == newId){
-            //             PlayerPrefs.SetString("PlayerConfig", txt);
-            //             ParseJsonData(txt);
-            //         } 
-            //    }
-               
-                                                       
-            }
-        }
-    }
-
-       private void ParseJsonData(string the_JSON_string){
-                Debug.Log(the_JSON_string);
-                var N = JSON.Parse(the_JSON_string); 
-                //Debug.Log(TextureData);
-                InitCredential = N["user"]["_id"].Value; 
-                PlayerPrefs.SetString("InitCredential", InitCredential);
-                Debug.Log("Deo HEre"+InitCredential);
-                if(!completed){ 
-
-                // GameObject CH = GameObject.FindWithTag("CastleController");
-                // CH.SendMessage("MapPosition",N.ToString());
-
-                GameObject CC = GameObject.FindWithTag("CastleController");
-                CC.SendMessage("SetLevel",N.ToString());
-
-                }else{
-                   
-                }
-        }
-
-      
-
-
+    
 }

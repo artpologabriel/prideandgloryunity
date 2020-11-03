@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7308813379379607605}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -339.7, y: -2.027491, z: -903.76117}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 7.19105, y: 7.1910634, z: 7.1910634}
   m_Children: []
   m_Father: {fileID: 7308813379479290436}
@@ -103,13 +103,14 @@ GameObject:
   m_Component:
   - component: {fileID: 7308813379479290436}
   - component: {fileID: 7308813379479290437}
+  - component: {fileID: 276046361966387136}
   m_Layer: 0
   m_Name: CastleController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7308813379479290436
 Transform:
   m_ObjectHideFlags: 0
@@ -132,16 +133,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7308813379479290434}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9acf9155bffcc064c950f1fb678dbaeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Castle: {fileID: 7308813379379607605}
-  x: 0
-  y: 1
-  z: 0
-  lvl: 14
   materials:
   - {fileID: 2100000, guid: 036677b5f4af1e84480554bede257d1e, type: 2}
   - {fileID: 2100000, guid: 202f1ac9a44cc6f4495336beb52a2515, type: 2}
@@ -158,5 +155,20 @@ MonoBehaviour:
   - {fileID: 2100000, guid: e1a4385b68f8d29459f1ba037fe4d3c4, type: 2}
   - {fileID: 2100000, guid: 991a99448a332c44a815980d4f066cf0, type: 2}
   - {fileID: 2100000, guid: 87c982c5b1db89047984a772451096df, type: 2}
-  serverURL: 
+  myID: 
   completed: 0
+--- !u!114 &276046361966387136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7308813379479290434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4851759f60c914e5ca6b5fe0a0481ea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  route: /castleinfo
+  query: 
+  functionName: SetLevel

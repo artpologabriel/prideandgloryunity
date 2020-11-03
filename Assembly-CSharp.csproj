@@ -88,6 +88,7 @@
      <Compile Include="Assets\PrideAndGlory\Scripts\NetworkController.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\NetWorkControllerPort.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\PickDrag.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\PlayerPositionRenderer.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\PlayersMapPositionController.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\PlayObject.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\PostToServer.cs" />
