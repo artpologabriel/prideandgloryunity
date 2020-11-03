@@ -43,6 +43,7 @@ public class TeleportImaginenaryCastle : MonoBehaviour
 
     void OnMouseUp(){
         ConfirmMenu3DObj.SetActive(true);
+        ConfirmMenu3DObj.SendMessage("OnActivated");
         transform.position = new Vector3(transform.position.x, height, transform.position.z);
        //                
     }

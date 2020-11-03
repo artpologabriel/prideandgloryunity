@@ -6,6 +6,7 @@ public class Map : MonoBehaviour
 {
     public GameObject tiles;
 	public GameObject[] tilesChilds;
+	public GameObject[] tilesChildsToDisable;
     public float height = .1f;
     
 	public bool click = false;
@@ -39,13 +40,13 @@ public class Map : MonoBehaviour
 
 	void OnMouseDown(){
 		click = true;
-		Debug.Log("MapClick On");
+		//Debug.Log("MapClick On");
 	}
 
 	void OnMouseDrag(){
 		click = false;
 		clickTime += clickTime;
-		Debug.Log("MapClick Off "+ clickTime);
+		//Debug.Log("MapClick Off "+ clickTime);
 	}
 	
 	void OnMouseUp(){
@@ -56,7 +57,7 @@ public class Map : MonoBehaviour
 			Ray ray = ActiveCamera.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
 			if (Physics.Raycast(ray, out hit)) {									
-				    Debug.Log(" hitpoint" + hit.point);                
+				   //Debug.Log(" hitpoint" + hit.point);                
                     tiles.transform.position = hit.point;
 			}            
             tiles.SetActive(true);
@@ -67,13 +68,19 @@ public class Map : MonoBehaviour
 		clickTime = 1f;
 
 		PositionKids();
+		DisAble();
 	}
 	
 	void PositionKids(){
-
 		for(int i = 0 ; i < tilesChilds.Length; i++){
 			tilesChilds[i].transform.position = tiles.transform.position;
+			//StartCoroutine(DisAble(tilesChilds[i].gameObject));
 		}
+	}
+
+	void DisAble(){
+		tilesChildsToDisable[0].SetActive(false);
+		tilesChildsToDisable[1].SetActive(false);
 	}
 
 

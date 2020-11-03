@@ -20,7 +20,7 @@ public class RayCast : MonoBehaviour {
 				GameObject h = GameObject.Find(hit.collider.name);
 				h.SendMessage("GotHit", null, SendMessageOptions.DontRequireReceiver);				
 				//targetObj.SendMessage(Message);
-				Debug.Log("hitpoint" + hit.point);
+				//Debug.Log("hitpoint" + hit.point);
 				if(h.name != "Map"){
 					GameObject Map = GameObject.FindWithTag("Map");
 					//Map.SendMessage("HideTiles");

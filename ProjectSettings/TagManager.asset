@@ -14,6 +14,7 @@ TagManager:
   - Tiles_Empty_Sml
   - Map
   - Castle_Holder
+  - tileObjThing
   layers:
   - Default
   - TransparentFX

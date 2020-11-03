@@ -21,6 +21,8 @@ public class PickDrag : MonoBehaviour
 
 	public string CameraFollowObj;
 
+	public float height = 1f;
+
 	void OnMouseDown(){
 		GameObject C = GameObject.FindWithTag("ActiveCamera");
 		Camera ActiveCamera = C.GetComponent<Camera>();
@@ -51,6 +53,7 @@ public class PickDrag : MonoBehaviour
 		Vector3 curPosition = ActiveCamera.ScreenToWorldPoint (curScreenPoint);// &#43; offset;
 		transform.TransformPoint(Vector3.zero);
 		transform.position = curPosition;
+		transform.position = new Vector3 (transform.position.x, height, transform.position.z);
 
 		DisableCameraPan();
 	}

@@ -7,6 +7,7 @@ public class FollowObject : MonoBehaviour
     
     public bool follow =false; 
     public float speed = 1f;
+    public float height = 18f;
     
     public GameObject targetGameObj;
     // Start is called before the first frame update
@@ -26,7 +27,9 @@ public class FollowObject : MonoBehaviour
     {
         if(follow){
             float step =  speed * Time.deltaTime; // calculate distance to move
-            transform.position = Vector3.MoveTowards(transform.position, targetGameObj.transform.position, step);
+            //transform.position = Vector3.MoveTowards(new Vector3(transform.position.x, height, transform.position.y), targetGameObj.transform.position, step);
+             transform.position = Vector3.MoveTowards(transform.position, targetGameObj.transform.position, step);
+
         }
     }
 }

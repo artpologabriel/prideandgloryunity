@@ -5,7 +5,7 @@ using UnityEngine;
 public class TelePort3DButton : MonoBehaviour
 {
     
-
+    public GameObject[]  TileObjectDetectors;
     public GameObject Castle;
     public GameObject ImaginaryCastle;
 
@@ -23,6 +23,32 @@ public class TelePort3DButton : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    void OnActivated(){
+        StartCoroutine(checkIfOk());
+    }
 
+
+    IEnumerator checkIfOk(){
+        yield return new WaitForSeconds(.2f);
+
+        GameObject[] tileObjThing = GameObject.FindGameObjectsWithTag("tileObjThing");
+        int x = 0;
+            for(int i=0; i < tileObjThing.Length;i++){
+               x++;
+            }
+        Debug.Log(x);
+        
+        CheckIfOkResult(x);
+    }
+
+    void CheckIfOkResult(int x){
+
+        if(x < 4){
+            gameObject.SetActive(false);
+        }else{
+            StartCoroutine(checkIfOk());
+        }
+        
+    }
 
 }

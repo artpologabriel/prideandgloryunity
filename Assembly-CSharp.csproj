@@ -87,6 +87,7 @@
      <Compile Include="Assets\PrideAndGlory\Scripts\MyCastle.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\NetworkController.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\NetWorkControllerPort.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\OkCode.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\PickDrag.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\PlayerPositionRenderer.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\PlayersMapPositionController.cs" />
@@ -105,6 +106,7 @@
      <Compile Include="Assets\PrideAndGlory\Scripts\TeleportImaginenaryCastle.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\TeleportOptionButton.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\TileHide.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\TileObjectDetector.cs" />
      <Compile Include="Assets\SimpleSQL\Demos\Scripts\01_SimpleQuery\SimpleQuery.cs" />
      <Compile Include="Assets\SimpleSQL\Demos\Scripts\02_ComplexQuery\ComplexQuery.cs" />
      <Compile Include="Assets\SimpleSQL\Demos\Scripts\03_Insert\InsertCommand.cs" />
