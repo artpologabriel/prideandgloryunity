@@ -7,12 +7,17 @@ public class Map : MonoBehaviour
     public GameObject tiles;
 	public GameObject[] tilesChilds;
 	public GameObject[] tilesChildsToDisable;
+	public GameObject[] tilesChildsToEnable;
+	public GameObject[] tilesChildsToResetTexture;
     public float height = .1f;
     
 	public bool click = false;
 	public float clickTime = 1;
 
     public GameObject Canvas_MapClickOptions;
+
+
+	public Texture2D textureDefault;
 
     void Update () {
 		
@@ -69,6 +74,7 @@ public class Map : MonoBehaviour
 
 		PositionKids();
 		DisAble();
+		SetBackTexture();
 	}
 	
 	void PositionKids(){
@@ -83,5 +89,18 @@ public class Map : MonoBehaviour
 		tilesChildsToDisable[1].SetActive(false);
 	}
 
+	void EnableKids(){
+		for(int i=0; i < tilesChildsToEnable.Length; i++){
+			tilesChildsToEnable[i].SetActive(true);
+		}
+	}
+
+	void SetBackTexture(){
+
+		for(int i = 0 ; i < tilesChildsToResetTexture.Length; i++){
+			tilesChildsToResetTexture[i].GetComponent<Renderer>().material.mainTexture = textureDefault;
+		}
+		
+	}
 
 }

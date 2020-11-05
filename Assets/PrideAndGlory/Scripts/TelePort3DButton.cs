@@ -10,10 +10,14 @@ public class TelePort3DButton : MonoBehaviour
     public GameObject ImaginaryCastle;
 
     public GameObject tiles;
+    bool clickable = true;
 
     void GotHit(){
-        Castle.SendMessage("TeleportNow");
-        StartCoroutine(DisableMe());            
+        if(clickable){
+            Castle.SendMessage("TeleportNow");
+            StartCoroutine(DisableMe());                        
+        }
+        
     }
 
     IEnumerator DisableMe(){
@@ -21,6 +25,14 @@ public class TelePort3DButton : MonoBehaviour
         ImaginaryCastle.SetActive(false);
         tiles.SetActive(false);
         gameObject.SetActive(false);
+    }
+
+    void ClickaBle(){
+        clickable = true;
+    }
+
+    void UnClickable(){
+        clickable = false;
     }
 
     void OnActivated(){
@@ -44,8 +56,10 @@ public class TelePort3DButton : MonoBehaviour
     void CheckIfOkResult(int x){
 
         if(x < 4){
-            gameObject.SetActive(false);
+           // gameObject.SetActive(false);
+           UnClickable();
         }else{
+            ClickaBle();
             StartCoroutine(checkIfOk());
         }
         

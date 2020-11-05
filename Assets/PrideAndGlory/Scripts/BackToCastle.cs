@@ -6,7 +6,9 @@ public class BackToCastle : MonoBehaviour
 {
     
     public bool Move = false;
-    public float speed = 2f;
+    public float speedNormal = 2f;
+    public float speedQuick = 2f;
+    float speed;
     public GameObject targetGameObj;
     public GameObject CanvasDistance;
     public GameObject CastleRenderer;
@@ -43,12 +45,12 @@ public class BackToCastle : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {        
         if(Move){
             if(Quick){
-                speed = 0.1f;
+                speed = speedQuick;
             }else{
-                speed = 2f;
+                speed = speedNormal;
             }
             float step =  speed; // * Time.deltaTime; // calculate distance to move
             transform.position = Vector3.MoveTowards(transform.position, targetGameObj.transform.position, step);

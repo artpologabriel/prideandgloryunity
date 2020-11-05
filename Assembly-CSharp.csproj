@@ -64,10 +64,13 @@
      <Compile Include="Assets\PrideAndGlory\Scripts\CameraControl.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\CameraDragZoom.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\CameraHandler.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\CamMapPosition.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\CamTileDistance.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\CanvasController.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\CastleRenderer.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\customGrid.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Deo\CastleController.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\Deo\D_BuildingController.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Deo\D_chatScript.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Deo\D_Menu\CloseTab.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Deo\SpriteAnimation.cs" />

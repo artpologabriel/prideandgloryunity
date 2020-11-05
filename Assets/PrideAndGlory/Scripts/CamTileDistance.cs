@@ -33,7 +33,7 @@ public class CamTileDistance : MonoBehaviour
 
             float dist = Vector3.Distance( MyCastlePoint.transform.position, transform.position);
 
-            DistanceToCastlePoint.text = dist + " km";
+            DistanceToCastlePoint.text = Mathf.Round(dist) + " km";
 
     }
 
