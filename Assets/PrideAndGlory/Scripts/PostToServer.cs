@@ -35,9 +35,11 @@ public class PostToServer : MonoBehaviour
             Debug.Log("Status Code: " + request.responseCode);
             Debug.Log(request.downloadHandler.text);
 
-            Debug.Log(action);
-                                            GameObject Obj = GameObject.Find(thisObj);
-                                            Obj.SendMessage(action, txt, SendMessageOptions.DontRequireReceiver); 
+            
+            string action = N["action"].Value;
+            string thisObj = N["receiverObj"].Value; 
+            GameObject Obj = GameObject.Find(thisObj);
+            Obj.SendMessage(action, txt, SendMessageOptions.DontRequireReceiver); 
            //ParseDataJson(request.downloadHandler.text);
            //ParseDataJsonSupplier(request.downloadHandler.text);
             //System.IO.File.WriteAllText("C:\blahblah_yourfilepath\yourtextfile.txt", request.downloadHandler.text);   

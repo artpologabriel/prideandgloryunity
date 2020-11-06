@@ -13748,7 +13748,7 @@ MonoBehaviour:
   JSONFileName: -pag.json
   writingJson: 0
   completed: 0
-  createNewPlayer: 0
+  createNewPlayer: 1
 --- !u!1 &1641093780
 GameObject:
   m_ObjectHideFlags: 0
