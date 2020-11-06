@@ -10,7 +10,6 @@ public class PostToServer : MonoBehaviour
 {
     
 
-
     public void PostDataToServer(string data){
         
         StartCoroutine(Post(data));
@@ -36,12 +35,18 @@ public class PostToServer : MonoBehaviour
             Debug.Log("Status Code: " + request.responseCode);
             Debug.Log(request.downloadHandler.text);
 
-            string recievedata = request.downloadHandler.text;
-            string action  = N["action"].Value;
-            string thisObj = N["receiverObj"].Value;
             Debug.Log(action);
-             GameObject Obj = GameObject.Find(thisObj);
-             Obj.SendMessage(action, recievedata, SendMessageOptions.DontRequireReceiver);  
+                                            GameObject Obj = GameObject.Find(thisObj);
+                                            Obj.SendMessage(action, txt, SendMessageOptions.DontRequireReceiver); 
+           //ParseDataJson(request.downloadHandler.text);
+           //ParseDataJsonSupplier(request.downloadHandler.text);
+            //System.IO.File.WriteAllText("C:\blahblah_yourfilepath\yourtextfile.txt", request.downloadHandler.text);   
+           // res = JsonUtility.FromJson<LibraryListResponse>(request.downloadHandler.text);
+            //Debug.Log(res.id + res.name + res.username);
+
+
+            //print("Finished Uploading Image" + imageNum);
+                    //Debug.Log(w.downloadHandler.text);
                    
         }
 

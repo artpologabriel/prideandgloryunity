@@ -28,16 +28,17 @@ public class GetContentsFromServer : MonoBehaviour
     void GetData(string data){
         
         string[] n =   data.Split('-');    
-        string o = gameObject.name;       
-        string q = n[0];
-        string f = n[1];
-        StartCoroutine(Get(q, f, o));
+        string o = gameObject.name; 
+        string route = n[0];
+        string action = n[1];
+        string id = n[2];
+        StartCoroutine(Get(route, action, o, id));
     }
 
-     IEnumerator Get(string query, string action, string thisObj) {
+     IEnumerator Get(string route, string action, string thisObj, string id) {
          
         //string urldata = url + query;      
-        string urldata = Main.ServerUrl + route +"/"+ query;
+        string urldata = Main.ServerUrl +"/"+ route +"/"+ id;
         //string urldata = "http://18.134.172.35/castleinfo/5fa0ca9a0a0d6c9eed1000a3";
 
                 

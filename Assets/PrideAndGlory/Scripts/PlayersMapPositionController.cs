@@ -12,7 +12,10 @@ public class PlayersMapPositionController : MonoBehaviour
     public float height = .5f;
 
     void Start(){
-        string data = "usersposition"+"-"+"SetPlayersPosition";
+        string route = "usersposition";
+        string action = "SetPlayersPosition";
+        string id = "";
+        string data = route+"-"+action+"-"+id;
         gameObject.SendMessage("GetData", data);
     }
 
