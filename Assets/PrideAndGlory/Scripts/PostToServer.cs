@@ -36,7 +36,7 @@ public class PostToServer : MonoBehaviour
             Debug.Log("Status Code: " + request.responseCode);
             Debug.Log(request.downloadHandler.text);
 
-
+            string txt = request.downloadHandler.text;
             string action  = N["action"].Value;
             string thisObj = N["receiverObj"].Value;
             Debug.Log(action);
