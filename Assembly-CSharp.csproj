@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\PlayAudio.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\AddObjectController.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Auth_Controller.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\BackToCastle.cs" />
@@ -82,6 +83,7 @@
      <Compile Include="Assets\PrideAndGlory\Scripts\GetDeviceID.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Grid.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\GridPlacement.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\IntroController.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Main.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Map.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\mapDragZoom.cs" />

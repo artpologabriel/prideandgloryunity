@@ -10,9 +10,9 @@ public class GetContentsFromServer : MonoBehaviour
     
     
     
-    public string route;
-    public string query;
-    public string functionName;
+     string route;
+     string query;
+     string functionName;
     
     // Start is called before the first frame update
     void Start()
