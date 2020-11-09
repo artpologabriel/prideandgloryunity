@@ -13,7 +13,7 @@ public class IntroController : MonoBehaviour
 
 
     IEnumerator GotoScene(){
-            yield return new WaitForSeconds(11f);
+            yield return new WaitForSeconds(15f);
              SceneManager.LoadScene("PrideAndGlory");
     }
 

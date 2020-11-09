@@ -112,6 +112,7 @@
      <Compile Include="Assets\PrideAndGlory\Scripts\TeleportOptionButton.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\TileHide.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\TileObjectDetector.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\VideoPlayerCs.cs" />
      <Compile Include="Assets\SimpleSQL\Demos\Scripts\01_SimpleQuery\SimpleQuery.cs" />
      <Compile Include="Assets\SimpleSQL\Demos\Scripts\02_ComplexQuery\ComplexQuery.cs" />
      <Compile Include="Assets\SimpleSQL\Demos\Scripts\03_Insert\InsertCommand.cs" />
