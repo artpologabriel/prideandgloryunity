@@ -38,8 +38,11 @@ public class PostToServer : MonoBehaviour
             
             string action = N["action"].Value;
             string thisObj = N["receiverObj"].Value; 
+            string data = request.downloadHandler.text;
+           // Debug.Log(action);
+           // Debug.Log(thisObj);
             GameObject Obj = GameObject.Find(thisObj);
-            Obj.SendMessage(action, txt, SendMessageOptions.DontRequireReceiver); 
+            Obj.SendMessage(action, data, SendMessageOptions.DontRequireReceiver); 
            
                    
         }

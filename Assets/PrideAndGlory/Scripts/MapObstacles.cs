@@ -41,13 +41,13 @@ public class MapObstacles : MonoBehaviour
 
         string route = "route:mapobstaclehere";
         string action = ",action:LoadObstacles";
-        string id = ",xpos:"+ Mathf.Round(xPos)  +",zpos:"+ Mathf.Round(zPos); //or query
+        string query = ",xpos:"+ Mathf.Round(xPos)  +",zpos:"+ Mathf.Round(zPos); //or query
         string receiverObj = ",receiverObj:"+ gameObject.name;
 
-        string data = route + action + id;
-        Debug.Log(data);
+        string data = route + action + receiverObj + query;
+       // Debug.Log(data);
         
-        //gameObject.SendMessage("PostDataToServer", data);
+        gameObject.SendMessage("PostDataToServer", data);
         
     }
 
