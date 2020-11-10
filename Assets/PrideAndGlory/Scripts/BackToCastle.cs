@@ -17,7 +17,7 @@ public class BackToCastle : MonoBehaviour
     void Start()
     {
         string InitCredential = Main.InitCredential;
-        Debug.Log(InitCredential);
+        //Debug.Log(InitCredential);
 
     }
 

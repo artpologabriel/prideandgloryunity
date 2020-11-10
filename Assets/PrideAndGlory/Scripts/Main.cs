@@ -24,6 +24,7 @@ public class Main : MonoBehaviour
     public static string ServerUrl;
 
     public string serverURL;
+    public string u_id;
 
     public static string myData;
 
@@ -36,7 +37,7 @@ public class Main : MonoBehaviour
     public GameObject NetworkController;
 
 
-    public string JSONFileName = "-pag.json";
+    string JSONFileName = "";
     private bool isWriting;
     private static string MarksDirectory;
     public bool writingJson = false;
@@ -47,6 +48,7 @@ public class Main : MonoBehaviour
     void Awake()
         {
             ServerUrl = serverURL;
+            u_id = InitCredential;
 
             if(instance == null){
                 instance = this;
@@ -77,17 +79,18 @@ public class Main : MonoBehaviour
             string theDate = System.DateTime.Now.ToString("MM/dd/yyyy"); 
 
 
-            Debug.Log(theTime + "-" +theDate );
+            //Debug.Log(theTime + "-" +theDate );
 
             if(createNewPlayer){
                  StartCoroutine(PostContentsFromServer());
+                 Debug.Log("createNewPlayer");
             }else{
                         if(!checkCredential()){                               
                         StartCoroutine(PostContentsFromServer());
                     } else{
                         InitCredential = PlayerPrefs.GetString("InitCredential");
                         Debug.Log(InitCredential);
-                        string url = ServerUrl + "userdata";
+                        string url = ServerUrl;
                         StartCoroutine(GetContentsFromServer(url,InitCredential,"ParseJsonData"));
                     }
             }
@@ -215,15 +218,15 @@ public class Main : MonoBehaviour
 
         if(InitCredential == ""){
                     Debug.Log("not login");
-                    //EnableGameObj("Canvas_Auth");
+                    
                     return false;
         }else{
-                  
+                  Debug.Log("logged in" + InitCredential);
                   return true;
-                    Debug.Log("logged in");
-                    //EnableGameObj("Canvas_Dashboard");
+                    
+                    
         }
-        //Debug.Log(PlayerPrefs.GetString("Token"));
+        
     }
 
     IEnumerator CloseWelcomPanel(){
@@ -330,7 +333,9 @@ public class Main : MonoBehaviour
     }
 
      IEnumerator PostContentsFromServer() {
-         string url = ServerUrl + "user";
+
+         string url = ServerUrl + "/user";
+         Debug.Log(url);
         WWWForm form = new WWWForm();
         form.AddField("", "");
         using (UnityWebRequest w = UnityWebRequest.Post(url, form))
@@ -358,7 +363,7 @@ public class Main : MonoBehaviour
 
     IEnumerator GetContentsFromServer(string url, string id, string functionName) {
          
-        string urldata = ServerUrl + "userdata/"+ id;      
+        string urldata = ServerUrl + "/userdata/"+ id;  
         Debug.Log(urldata);
         // Create a Web Form                
         using (UnityWebRequest w = UnityWebRequest.Get(urldata))

@@ -25,8 +25,6 @@ public class CastleController : MonoBehaviour
 
         public bool completed = false;
 
-
-      
       void SetId(string Id){
         myID = Id;
         StartCoroutine(DisableMe());
@@ -38,7 +36,7 @@ public class CastleController : MonoBehaviour
     }  
 
     void Enable(){
-        Debug.Log("Enabled " + gameObject.name);
+        // Debug.Log("Enabled " + gameObject.name);
         CheckName();
     }
 
@@ -49,19 +47,19 @@ public class CastleController : MonoBehaviour
           string v = gameObject.name;          
           string[] na =   v.Split('-');
           string id = na[1];
-          string data = id + "-" + "SetLevel";
+          string route = "castleinfo";
+          string data = route + "-" + "SetLevel"+"-"+id;
           gameObject.SendMessage("GetData", data);
     }
 
       public void SetLevel(string JsonData)
       {
             Debug.Log(JsonData);
-        var N = JSON.Parse(JsonData);
-                 var c_name =N[0]["c_level"].Value;
-                var c_level = N[0]["c_level"].Value;
-                var c_id = N[0]["_id"].Value;
-
-             Level(Int32.Parse(c_level));
+            var N = JSON.Parse(JsonData);
+            var c_name =N[0]["c_level"].Value;
+            var c_level = N[0]["c_level"].Value;
+            var c_id = N[0]["_id"].Value;
+            Level(Int32.Parse(c_level));
 
 
       }
