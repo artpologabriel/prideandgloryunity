@@ -22,7 +22,7 @@ public class PostToServer : MonoBehaviour
             Debug.Log(txt);
             var N = JSON.Parse(txt); 
                                                     
-            string url = Main.ServerUrl + N["route"].Value; 
+            string url = Main.ServerUrl +"/"+ N["route"].Value; 
             Debug.Log("url to post+"+ url);
 
 
@@ -40,15 +40,7 @@ public class PostToServer : MonoBehaviour
             string thisObj = N["receiverObj"].Value; 
             GameObject Obj = GameObject.Find(thisObj);
             Obj.SendMessage(action, txt, SendMessageOptions.DontRequireReceiver); 
-           //ParseDataJson(request.downloadHandler.text);
-           //ParseDataJsonSupplier(request.downloadHandler.text);
-            //System.IO.File.WriteAllText("C:\blahblah_yourfilepath\yourtextfile.txt", request.downloadHandler.text);   
-           // res = JsonUtility.FromJson<LibraryListResponse>(request.downloadHandler.text);
-            //Debug.Log(res.id + res.name + res.username);
-
-
-            //print("Finished Uploading Image" + imageNum);
-                    //Debug.Log(w.downloadHandler.text);
+           
                    
         }
 

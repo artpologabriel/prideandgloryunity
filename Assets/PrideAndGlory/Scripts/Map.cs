@@ -15,6 +15,7 @@ public class Map : MonoBehaviour
 	public float clickTime = 1;
 
     public GameObject Canvas_MapClickOptions;
+	public GameObject MapObstacles;
 
 
 	public Texture2D textureDefault;
@@ -68,6 +69,7 @@ public class Map : MonoBehaviour
             tiles.SetActive(true);
 			Canvas_MapClickOptions.SetActive(true);
 			
+			MapObstacles.SendMessage("MapDragged");
 			
 		}
 		clickTime = 1f;
@@ -75,6 +77,7 @@ public class Map : MonoBehaviour
 		PositionKids();
 		DisAble();
 		SetBackTexture();
+		
 	}
 	
 	void PositionKids(){

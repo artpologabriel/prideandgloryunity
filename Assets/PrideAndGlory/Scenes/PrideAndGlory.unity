@@ -4500,6 +4500,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 518685477}
   m_CullTransparentMesh: 0
+--- !u!1 &519161603
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 519161604}
+  - component: {fileID: 519161606}
+  - component: {fileID: 519161605}
+  m_Layer: 0
+  m_Name: MapObstacles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &519161604
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519161603}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 828347878}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519161605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519161603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73e1abcf1f4be41b3b0c808d93ff65ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &519161606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519161603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba7d126696037408d97c15386ab735bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cam: {fileID: 897626096}
 --- !u!4 &527672191 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1114023636946978159, guid: fcc93171112a34f2aa0dd48280ccdac6,
@@ -6631,7 +6688,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 831, y: 0, z: 809}
   m_LocalScale: {x: 167.30803, y: 167.30803, z: 167.30803}
-  m_Children: []
+  m_Children:
+  - {fileID: 519161604}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6666,6 +6724,7 @@ MonoBehaviour:
   click: 0
   clickTime: 1
   Canvas_MapClickOptions: {fileID: 1681930676}
+  MapObstacles: {fileID: 519161603}
   textureDefault: {fileID: 2800000, guid: a3f5815fc04fa44e692dd2213cd2c83a, type: 3}
 --- !u!1 &829015305
 GameObject:
