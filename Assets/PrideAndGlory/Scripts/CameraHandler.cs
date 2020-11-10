@@ -46,7 +46,7 @@ public class CameraHandler : MonoBehaviour {
         }else if(location == "innerMap"){
             BoundsX = innerMapX;
             BoundsZ = innerMapZ;
-            transform.position = new Vector3(-58f,18.7f,-77f);
+            transform.position = new Vector3(-55f,18.7f,-55f);
         }else{
             BoundsX = worldMapX;
             BoundsZ = worldMapZ;
