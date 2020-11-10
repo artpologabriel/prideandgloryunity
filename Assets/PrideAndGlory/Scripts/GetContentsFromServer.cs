@@ -14,7 +14,8 @@ public class GetContentsFromServer : MonoBehaviour
      string query;
      string functionName;
     
-    // Start is called before the first frame update
+    public bool DebugLog = true;
+    
     void Start()
     {
         /*
@@ -36,12 +37,13 @@ public class GetContentsFromServer : MonoBehaviour
     }
 
      IEnumerator Get(string route, string action, string thisObj, string id) {
-         
-        //string urldata = url + query;      
+                 
         string urldata = Main.ServerUrl +"/"+ route +"/"+ id;
-        //string urldata = "http://18.134.172.35/castleinfo/5fa0ca9a0a0d6c9eed1000a3";
 
-                
+        if(DebugLog){
+            Debug.Log(urldata);
+        }
+               
                     
                             using (UnityWebRequest w = UnityWebRequest.Get(urldata))
                                     {
@@ -52,17 +54,24 @@ public class GetContentsFromServer : MonoBehaviour
                                         }
                                         else
                                         {                                                                                             
-                                            Debug.Log(w.downloadHandler.text);
+                                            
                                             string txt = w.downloadHandler.text.ToString(); 
                                             byte[] data = w.downloadHandler.data;
-                                            Debug.Log(action);
+                                            
+                                            if(DebugLog){
+                                                Debug.Log(w.downloadHandler.text);
+                                                Debug.Log(action);
+                                            }
+                                            
                                             GameObject Obj = GameObject.Find(thisObj);
                                             Obj.SendMessage(action, txt, SendMessageOptions.DontRequireReceiver);                                                     
                                         }
                                     }
                     
-                
-        Debug.Log(gameObject.name + " : " + urldata);
+        if(DebugLog){
+            Debug.Log(gameObject.name + " : " + urldata);
+        }        
+ 
         // Create a Web Form                
  
     }

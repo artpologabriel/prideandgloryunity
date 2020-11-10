@@ -9,6 +9,9 @@ using SimpleJSON;
 public class PostToServer : MonoBehaviour
 {
     
+    public bool DebugLog = true;
+
+
 
     public void PostDataToServer(string data){
         
@@ -19,11 +22,17 @@ public class PostToServer : MonoBehaviour
     IEnumerator Post(string data)
         {
             string txt = JsonMaker(data);
-            Debug.Log(txt);
+            if(DebugLog){
+                Debug.Log(txt);
+            }            
             var N = JSON.Parse(txt); 
                                                     
             string url = Main.ServerUrl +"/"+ N["route"].Value; 
+
+            if(DebugLog){
             Debug.Log("url to post+"+ url);
+            }
+
 
 
             var request = new UnityWebRequest(url, "POST");
@@ -32,15 +41,22 @@ public class PostToServer : MonoBehaviour
             request.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type", "application/json");
             yield return request.SendWebRequest();
-            Debug.Log("Status Code: " + request.responseCode);
-            Debug.Log(request.downloadHandler.text);
+            
+            if(DebugLog){
+                Debug.Log("Status Code: " + request.responseCode);
+                Debug.Log(request.downloadHandler.text);
+            }
 
             
             string action = N["action"].Value;
             string thisObj = N["receiverObj"].Value; 
             string jsonData = request.downloadHandler.text;
-           // Debug.Log(action);
-           // Debug.Log(thisObj);
+            
+            if(DebugLog){
+                Debug.Log(action);
+                Debug.Log(thisObj);
+            }
+
             GameObject Obj = GameObject.Find(thisObj);
             Obj.SendMessage(action, jsonData, SendMessageOptions.DontRequireReceiver); 
            

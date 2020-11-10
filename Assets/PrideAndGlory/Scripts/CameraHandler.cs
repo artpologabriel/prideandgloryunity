@@ -13,7 +13,7 @@ public class CameraHandler : MonoBehaviour {
     //public static readonly float[] BoundsZ = new float[]{-18f, -4f};
     public float[] BoundsX = new float[]{-10f, 5f};
     public float[] BoundsZ = new float[]{-18f, -4f};
-    private static readonly float[] ZoomBounds = new float[]{10f, 50f};
+    private static readonly float[] ZoomBounds = new float[]{20f, 50f};
     
     private Camera cam;
     
