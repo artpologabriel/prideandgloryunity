@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Castle: {fileID: 7308813379379607605}
+  lvl: 1
   materials:
   - {fileID: 2100000, guid: 036677b5f4af1e84480554bede257d1e, type: 2}
   - {fileID: 2100000, guid: 202f1ac9a44cc6f4495336beb52a2515, type: 2}
@@ -155,6 +156,21 @@ MonoBehaviour:
   - {fileID: 2100000, guid: e1a4385b68f8d29459f1ba037fe4d3c4, type: 2}
   - {fileID: 2100000, guid: 991a99448a332c44a815980d4f066cf0, type: 2}
   - {fileID: 2100000, guid: 87c982c5b1db89047984a772451096df, type: 2}
+  - {fileID: 2100000, guid: 75fc69a047ec6674db387af416c95172, type: 2}
+  - {fileID: 2100000, guid: 9eb2def30b60d6b4d8bc9ad498e535f2, type: 2}
+  - {fileID: 2100000, guid: 1b885034de6c78e41bbde891959ee7eb, type: 2}
+  - {fileID: 2100000, guid: ce595c00d6e198c4d84a09941218334e, type: 2}
+  - {fileID: 2100000, guid: 1c775da09295b44489d953ebc40f0635, type: 2}
+  - {fileID: 2100000, guid: 964c914e6d64a414695c2f0d6b665b06, type: 2}
+  - {fileID: 2100000, guid: 463f00ac0bd92ba48b6ad98ce6535cf1, type: 2}
+  - {fileID: 2100000, guid: 6b99c04a1a5e81941b5dff4b6c5a1f8f, type: 2}
+  - {fileID: 2100000, guid: 5028fbd0e1c31f841964a04e44c4db0f, type: 2}
+  - {fileID: 2100000, guid: e877e908acb6bfe4ca4f9bf3d9c7b7e1, type: 2}
+  - {fileID: 2100000, guid: d0852b0df65a2fe4da1bb7356a2d61c4, type: 2}
+  - {fileID: 2100000, guid: b244d6acd38b3204d9d61f03de4add61, type: 2}
+  - {fileID: 2100000, guid: 362b590c08f348e4bb0bc91375092ba3, type: 2}
+  - {fileID: 2100000, guid: 1287d8ef5499ed541807492253ba53a9, type: 2}
+  - {fileID: 2100000, guid: b9a9a4e8c45425640b3fd16de969d0b0, type: 2}
   myID: 
   completed: 0
 --- !u!114 &276046361966387136
@@ -169,6 +185,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4851759f60c914e5ca6b5fe0a0481ea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  route: /castleinfo
-  query: 
-  functionName: SetLevel

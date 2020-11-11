@@ -13,6 +13,7 @@ public class CastleController : MonoBehaviour
 {
     // Start is called before the first frame update
       public GameObject Castle;
+      public int lvl;
   
     [SerializeField]
     private Material[] materials;
