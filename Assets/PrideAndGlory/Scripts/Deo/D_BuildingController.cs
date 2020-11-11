@@ -115,7 +115,7 @@ IEnumerator CheckSlotData(){
 
       
         public void CreateCavalry(){
-            string data ="u_id:"+Main.InitCredential+",slotname:"+gameObject.name+",route:/cavalry,action:ReturnData,receiverObj:"+gameObject.name;
+            string data ="u_id:"+Main.InitCredential+",slotname:"+gameObject.name+",route:cavalry,action:ReturnData,receiverObj:"+gameObject.name;
             gameObject.SendMessage("PostDataToServer", data);
             buildingCreated = true;
             BuildingOption.SetActive(false);
@@ -128,7 +128,7 @@ IEnumerator CheckSlotData(){
         }
 
           public void CreateHospital(){
-             string data ="u_id:"+Main.InitCredential+",slotname:"+gameObject.name+",route:/hospital,action:LoadHospital,receiverObj:"+gameObject.name;
+             string data ="u_id:"+Main.InitCredential+",slotname:"+gameObject.name+",route:hospital,action:LoadHospital,receiverObj:"+gameObject.name;
             gameObject.SendMessage("PostDataToServer", data);
             buildingCreated = true;
             BuildingOption.SetActive(false);
@@ -136,7 +136,7 @@ IEnumerator CheckSlotData(){
         }
 
    public void CreateSiegeWorkshop(){
-            string data ="u_id:"+Main.InitCredential+",slotname:"+gameObject.name+",route:/siegeworkshop,action:LoadSiegeWorkshop,receiverObj:"+gameObject.name;
+            string data ="u_id:"+Main.InitCredential+",slotname:"+gameObject.name+",route:siegeworkshop,action:LoadSiegeWorkshop,receiverObj:"+gameObject.name;
             gameObject.SendMessage("PostDataToServer", data);
             buildingCreated = true;
             BuildingOption.SetActive(false);
@@ -148,13 +148,14 @@ IEnumerator CheckSlotData(){
          var cav_name =N["level"].Value;
          var c_id = N["_id"].Value;
          var slotname = N["slotname"].Value;
+         
          if(slotname == gameObject.name)
          {
             buildingCreated = true;
             GameObject targetObj  =GameObject.Find(gameObject.name);
             GameObject t = Instantiate(building[3],transform.position,transform.rotation) as GameObject;
             t.transform.parent = gameObject.transform;
-            t.transform.eulerAngles = new Vector3(0,139,0);
+            t.transform.eulerAngles = new Vector3(54,139,121);
             t.name = "siegeworkshop-"+c_id;
          }
 
@@ -162,7 +163,7 @@ IEnumerator CheckSlotData(){
     }
 
      public void CreateArchery(){
-            string data ="u_id:"+Main.InitCredential+",slotname:"+gameObject.name+",route:/archery,action:LoadArchery,receiverObj:"+gameObject.name;
+            string data ="u_id:"+Main.InitCredential+",slotname:"+gameObject.name+",route:archery,action:LoadArchery,receiverObj:"+gameObject.name;
             gameObject.SendMessage("PostDataToServer", data);
             buildingCreated = true;
             BuildingOption.SetActive(false);
@@ -180,7 +181,7 @@ IEnumerator CheckSlotData(){
             GameObject targetObj  =GameObject.Find(gameObject.name);
             GameObject t = Instantiate(building[2],transform.position,transform.rotation) as GameObject;
             t.transform.parent = gameObject.transform;
-            t.transform.eulerAngles = new Vector3(0,139,0);
+            t.transform.eulerAngles = new Vector3(54,139,121);
             t.name = "archery-"+c_id;
          }
 
@@ -198,7 +199,7 @@ IEnumerator CheckSlotData(){
             GameObject targetObj  =GameObject.Find(gameObject.name);
             GameObject t = Instantiate(building[1],transform.position,transform.rotation) as GameObject;
             t.transform.parent = gameObject.transform;
-            t.transform.eulerAngles = new Vector3(0,139,0);
+            t.transform.eulerAngles = new Vector3(54,139,121);
             t.name = "hospital-"+c_id;
          }
 
@@ -217,7 +218,7 @@ IEnumerator CheckSlotData(){
             GameObject targetObj  =GameObject.Find(gameObject.name);
             GameObject t = Instantiate(building[0],transform.position,transform.rotation) as GameObject;
             t.transform.parent = gameObject.transform;
-            t.transform.eulerAngles = new Vector3(0,139,0);
+            t.transform.eulerAngles = new Vector3(54,139,121);
             t.name = "cavalry-"+c_id;
          }
 
@@ -228,7 +229,7 @@ IEnumerator CheckSlotData(){
 
     
      public void CreateInfantrybarracks(){
-            string data ="u_id:"+Main.InitCredential+",slotname:"+gameObject.name+",route:/infantrybarracks,action:LoadInfantrybarracks,receiverObj:"+gameObject.name;
+            string data ="u_id:"+Main.InitCredential+",slotname:"+gameObject.name+",route:infantrybarracks,action:LoadInfantrybarracks,receiverObj:"+gameObject.name;
             gameObject.SendMessage("PostDataToServer", data);
             buildingCreated = true;
             BuildingOption.SetActive(false);
@@ -245,7 +246,7 @@ IEnumerator CheckSlotData(){
             GameObject targetObj  =GameObject.Find(gameObject.name);
             GameObject t = Instantiate(building[3],transform.position,transform.rotation) as GameObject;
             t.transform.parent = gameObject.transform;
-            t.transform.eulerAngles = new Vector3(0,139,0);
+            t.transform.eulerAngles = new Vector3(54,139,121);
             t.name = "infantrybarracks-"+c_id;
          }
 
@@ -255,7 +256,7 @@ IEnumerator CheckSlotData(){
 
 
     public void CreateEmbassy(){
-            string data ="u_id:"+Main.InitCredential+",slotname:"+gameObject.name+",route:/embassy,action:LoadEmbassy,receiverObj:"+gameObject.name;
+            string data ="u_id:"+Main.InitCredential+",slotname:"+gameObject.name+",route:embassy,action:LoadEmbassy,receiverObj:"+gameObject.name;
             gameObject.SendMessage("PostDataToServer", data);
             buildingCreated = true;
             BuildingOption.SetActive(false);
@@ -273,7 +274,7 @@ IEnumerator CheckSlotData(){
             GameObject targetObj  =GameObject.Find(gameObject.name);
             GameObject t = Instantiate(building[2],transform.position,transform.rotation) as GameObject;
             t.transform.parent = gameObject.transform;
-            t.transform.eulerAngles = new Vector3(0,139,0);
+            t.transform.eulerAngles = new Vector3(54,139,121);
             t.name = "embassy-"+c_id;
          }
 

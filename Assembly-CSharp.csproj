@@ -70,6 +70,7 @@
      <Compile Include="Assets\PrideAndGlory\Scripts\CastleRenderer.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\customGrid.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Deo\CastleController.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\Deo\Controller\D_BuildingSetLevel.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Deo\Controller\D_SetSlotData.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Deo\Controller\D_SlotController.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\Deo\D_BuildingController.cs" />
@@ -95,6 +96,7 @@
      <Compile Include="Assets\PrideAndGlory\Scripts\NetworkController.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\NetWorkControllerPort.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\ObjOnCamera.cs" />
+     <Compile Include="Assets\PrideAndGlory\Scripts\ObstacleDetector.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\OkCode.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\PickDrag.cs" />
      <Compile Include="Assets\PrideAndGlory\Scripts\PlayAudio.cs" />

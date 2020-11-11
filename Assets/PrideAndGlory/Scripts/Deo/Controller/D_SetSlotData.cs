@@ -20,18 +20,67 @@ public class D_SetSlotData : MonoBehaviour
             GameObject targetObj  =GameObject.Find(gameObject.name);
             GameObject t = Instantiate(building[0],transform.position,transform.rotation) as GameObject;
             t.transform.parent = gameObject.transform;
-            t.transform.eulerAngles = new Vector3(0,139,0);
-                    t.name=name+"-"+_id;
+            t.transform.eulerAngles = new Vector3(54,139,121);
+            t.name=name+"-"+_id;
+            t.SendMessage("BuildingSetLevel",data);
+
 
         }
         else if(name == "hospital"){
             GameObject targetObj  =GameObject.Find(gameObject.name);
             GameObject t = Instantiate(building[1],transform.position,transform.rotation) as GameObject;
             t.transform.parent = gameObject.transform;
-            t.transform.eulerAngles = new Vector3(0,139,0);
+            t.transform.eulerAngles = new Vector3(54,139,121);
             t.name=name+"-"+_id;
+                        t.SendMessage("BuildingSetLevel",data);
 
-        }
+
+        } 
+
+          else if(name == "embassy"){
+            GameObject targetObj  =GameObject.Find(gameObject.name);
+            GameObject t = Instantiate(building[2],transform.position,transform.rotation) as GameObject;
+            t.transform.parent = gameObject.transform;
+            t.transform.eulerAngles = new Vector3(54,139,121);
+            t.name=name+"-"+_id;
+                        t.SendMessage("BuildingSetLevel",data);
+
+
+        } 
+
+          else if(name == "infantrybarracks"){
+            GameObject targetObj  =GameObject.Find(gameObject.name);
+            GameObject t = Instantiate(building[3],transform.position,transform.rotation) as GameObject;
+            t.transform.parent = gameObject.transform;
+            t.transform.eulerAngles = new Vector3(54,139,121);
+            t.name=name+"-"+_id;
+                        t.SendMessage("BuildingSetLevel",data);
+
+
+        } 
+
+          else if(name == "siegeworkshop"){
+            GameObject targetObj  =GameObject.Find(gameObject.name);
+            GameObject t = Instantiate(building[4],transform.position,transform.rotation) as GameObject;
+            t.transform.parent = gameObject.transform;
+            t.transform.eulerAngles = new Vector3(54,139,121);
+            t.name=name+"-"+_id;
+                        t.SendMessage("BuildingSetLevel",data);
+
+
+        } 
+
+         else if(name == "archery"){
+            GameObject targetObj  =GameObject.Find(gameObject.name);
+            GameObject t = Instantiate(building[5],transform.position,transform.rotation) as GameObject;
+            t.transform.parent = gameObject.transform;
+            t.transform.eulerAngles = new Vector3(54,139,121);
+            t.name=name+"-"+_id;
+                        t.SendMessage("BuildingSetLevel",data);
+
+
+        } 
+
 
 
 

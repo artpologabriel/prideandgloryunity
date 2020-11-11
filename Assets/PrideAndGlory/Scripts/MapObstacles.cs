@@ -82,13 +82,13 @@ public class MapObstacles : MonoBehaviour
             return;
         }
 
-        objecttype = "Obstacle";
+        //objecttype = "Obstacle";
 
         for(int i = 0; i < obstacles.Length; i++){
             if(obstacles[i].name == objecttype){
                 GameObject obj = Instantiate(obstacles[i]) as GameObject;
                 obj.transform.position = new Vector3(x, height, y);
-                obj.name = objName;
+                obj.name = objecttype + "-" + objName;
                 obj.transform.parent = transform;
                 obj.transform.localScale = new Vector3(0.01f,0.01f,0.01f);
             }

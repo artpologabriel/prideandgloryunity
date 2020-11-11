@@ -19,10 +19,16 @@ public class D_SlotController : MonoBehaviour
         JSONArray infantrybarracks;
         JSONArray embassy;
         JSONArray archery;
+        bool mainId =false;
 
     void Awake(){
-       StartCoroutine(CheckSlotData());
+        StartCoroutine(CheckSlotData());
     }
+    void Update(){
+        // StartCoroutine(CheckSlotData());
+    }
+
+
 
 
 IEnumerator CheckSlotData(){
@@ -38,21 +44,17 @@ IEnumerator CheckSlotData(){
     void LoadSlotData(string data){
         var N = JSON.Parse(data);
    
-        
+    
         cav_array = N["cavalry"].AsArray;
         hos_array = N["hospital"].AsArray;
 
-     
-
-
+    
        for(int i =0; i < cav_array.Count; i++)
        {
                var c_id =cav_array[i]["_id"].Value;
         var c_slot =cav_array[i]["slotname"].Value;
          var c_level =cav_array[i]["level"].Value;
          var c_uid =cav_array[i]["u_id"].Value;
-
-
         string dataJson = "cavalry"+"-"+c_id+"-"+c_level+"-"+c_uid;
         GameObject cavobj =  GameObject.Find(c_slot);
         cavobj.SendMessage("SetData",dataJson);
@@ -63,7 +65,6 @@ IEnumerator CheckSlotData(){
 
      
         //Hospital Data
-                          Debug.Log("Deo slot name Hospital size "+hos_array.Count);
 
           for(int h =0; h < hos_array.Count; h++)
        {
@@ -81,12 +82,12 @@ IEnumerator CheckSlotData(){
 
     //siegeworkshop
                siegeworkshop= N["siegeworkshop"].AsArray;
-      for(int h =0; h < siegeworkshop.Count; h++)
+      for(int si =0; si < siegeworkshop.Count; si++)
        {
-        var s_id =siegeworkshop[h]["_id"].Value;
-        var s_slot =siegeworkshop[h]["slotname"].Value;
-         var s_level =siegeworkshop[h]["level"].Value;
-         var s_uid =siegeworkshop[h]["u_id"].Value;
+        var s_id =siegeworkshop[si]["_id"].Value;
+        var s_slot =siegeworkshop[si]["slotname"].Value;
+         var s_level =siegeworkshop[si]["level"].Value;
+         var s_uid =siegeworkshop[si]["u_id"].Value;
          string siegeworkshopData = "siegeworkshop"+"-"+s_id+"-"+s_level+"-"+s_uid;
 
         GameObject hosObj =  GameObject.Find(s_slot);
@@ -98,12 +99,12 @@ IEnumerator CheckSlotData(){
            //infantrybarracks
          infantrybarracks= N["infantrybarracks"].AsArray;
 
-      for(int h =0; h < infantrybarracks.Count; h++)
+      for(int inf =0; inf < infantrybarracks.Count; inf++)
        {
-        var s_id =infantrybarracks[h]["_id"].Value;
-        var s_slot =infantrybarracks[h]["slotname"].Value;
-         var s_level =infantrybarracks[h]["level"].Value;
-         var s_uid =infantrybarracks[h]["u_id"].Value;
+        var s_id =infantrybarracks[inf]["_id"].Value;
+        var s_slot =infantrybarracks[inf]["slotname"].Value;
+         var s_level =infantrybarracks[inf]["level"].Value;
+         var s_uid =infantrybarracks[inf]["u_id"].Value;
          string infantrybarracksData = "infantrybarracks"+"-"+s_id+"-"+s_level+"-"+s_uid;
         GameObject hosObj =  GameObject.Find(s_slot);
         hosObj.SendMessage("SetData",infantrybarracksData);
@@ -114,12 +115,12 @@ IEnumerator CheckSlotData(){
            //embassy
          embassy= N["embassy"].AsArray;
 
-      for(int h =0; h < embassy.Count; h++)
+      for(int em =0; em < embassy.Count; em++)
        {
-        var s_id =embassy[h]["_id"].Value;
-        var s_slot =embassy[h]["slotname"].Value;
-         var s_level =embassy[h]["level"].Value;
-         var s_uid =embassy[h]["u_id"].Value;
+        var s_id =embassy[em]["_id"].Value;
+        var s_slot =embassy[em]["slotname"].Value;
+         var s_level =embassy[em]["level"].Value;
+         var s_uid =embassy[em]["u_id"].Value;
          string embassyData = "embassy"+"-"+s_id+"-"+s_level+"-"+s_uid;
 
         GameObject hosObj =  GameObject.Find(s_slot);
@@ -131,12 +132,12 @@ IEnumerator CheckSlotData(){
          //archery
          archery= N["archery"].AsArray;
 
-      for(int h =0; h < archery.Count; h++)
+      for(int arc =0; arc < archery.Count; arc++)
        {
-        var s_id =archery[h]["_id"].Value;
-        var s_slot =archery[h]["slotname"].Value;
-         var s_level =archery[h]["level"].Value;
-         var s_uid =archery[h]["u_id"].Value;
+        var s_id =archery[arc]["_id"].Value;
+        var s_slot =archery[arc]["slotname"].Value;
+         var s_level =archery[arc]["level"].Value;
+         var s_uid =archery[arc]["u_id"].Value;
          string archeryData = "archery"+"-"+s_id+"-"+s_level+"-"+s_uid;
 
         GameObject hosObj =  GameObject.Find(s_slot);

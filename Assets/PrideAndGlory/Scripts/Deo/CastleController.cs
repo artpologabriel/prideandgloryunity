@@ -57,8 +57,8 @@ public class CastleController : MonoBehaviour
       {
             Debug.Log(JsonData);
             var N = JSON.Parse(JsonData);
-            var c_name =N[0]["c_level"].Value;
-            var c_level = N[0]["c_level"].Value;
+            var c_name =N[0]["level"].Value;
+            var c_level = N[0]["level"].Value;
             var c_id = N[0]["_id"].Value;
             Level(Int32.Parse(c_level));
 
