@@ -21,7 +21,8 @@ public class MapObstacles : MonoBehaviour
 
 
     IEnumerator MapDragged(){
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
+        
         CheckObjs();
         yield return new WaitForSeconds(1f);
         StartCoroutine(MapDragged());
@@ -39,6 +40,7 @@ public class MapObstacles : MonoBehaviour
             CamZpos = zPos;
         }
 
+        Debug.Log("CheckObjs");
 
 
         string route = "route:mapobstaclehere";

@@ -20,6 +20,9 @@ public class Map : MonoBehaviour
 
 	public Texture2D textureDefault;
 
+	public bool showMapMenu = true;
+	public GameObject[] showMapMenuObjs; 
+
     void Update () {
 		
 		/*
@@ -57,6 +60,10 @@ public class Map : MonoBehaviour
 	
 	void OnMouseUp(){
 
+		
+
+
+
 		if(clickTime < 100){
 			GameObject C = GameObject.FindWithTag("ActiveCamera");
 			Camera ActiveCamera = C.GetComponent<Camera>();
@@ -66,8 +73,20 @@ public class Map : MonoBehaviour
 				   //Debug.Log(" hitpoint" + hit.point);                
                     tiles.transform.position = hit.point;
 			}            
-            tiles.SetActive(true);
-			Canvas_MapClickOptions.SetActive(true);
+            
+			if(showMapMenu){
+				showMapMenuObjs[0].SetActive(false);
+				showMapMenuObjs[1].SetActive(false);
+				showMapMenu = false;
+			}else{
+				showMapMenuObjs[0].SetActive(true);
+				showMapMenuObjs[1].SetActive(true);
+				showMapMenu = true;
+			}
+
+			tiles.SetActive(true);
+			//Canvas_MapClickOptions.SetActive(true);	
+			
 			
 			MapObstacles.SendMessage("MapDragged");
 			
@@ -90,6 +109,7 @@ public class Map : MonoBehaviour
 	void DisAble(){
 		tilesChildsToDisable[0].SetActive(false);
 		tilesChildsToDisable[1].SetActive(false);
+		tilesChildsToDisable[2].SetActive(false);
 	}
 
 	void EnableKids(){

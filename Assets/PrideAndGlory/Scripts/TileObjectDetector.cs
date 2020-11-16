@@ -5,6 +5,7 @@ using UnityEngine;
 public class TileObjectDetector : MonoBehaviour
 {
     
+    public GameObject[] ObjectToDisableWhenOnBarrier;
     public GameObject MyParent;
     public Texture2D texture1;
     public Texture2D texture2;
@@ -16,6 +17,12 @@ public class TileObjectDetector : MonoBehaviour
     {                
         MyParent.gameObject.GetComponent<Renderer>().material.mainTexture = texture2;
         tileObjThing.SetActive(false);
+        Debug.Log(other.name);
+        if(other.name == "barrier"){            
+            for(int i=0; i < ObjectToDisableWhenOnBarrier.Length;i++){
+                ObjectToDisableWhenOnBarrier[i].SetActive(false);
+            }
+        }
     }
 
     //When the Primitive exits the collision, it will change Color

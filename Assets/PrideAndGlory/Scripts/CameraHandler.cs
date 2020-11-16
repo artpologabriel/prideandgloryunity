@@ -5,7 +5,8 @@ public class CameraHandler : MonoBehaviour {
 
     public GameObject myCastleHolder;
 
-    private static readonly float PanSpeed = 20f;
+   // private static readonly float PanSpeed = 20f;
+    public float PanSpeed = 20f;
     private static readonly float ZoomSpeedTouch = 0.1f;
     private static readonly float ZoomSpeedMouse = 0.5f;
     
@@ -142,5 +143,12 @@ public class CameraHandler : MonoBehaviour {
         }
     
         cam.fieldOfView = Mathf.Clamp(cam.fieldOfView - (offset * speed), ZoomBounds[0], ZoomBounds[1]);
+        
+        if(PanSpeed > 20){
+            PanSpeed = 20;    
+        }else{
+            PanSpeed =  (cam.fieldOfView - 20) + 3 ; 
+        }
+
     }
 }
