@@ -104,11 +104,9 @@ GameObject:
   - component: {fileID: 7308813379479290436}
   - component: {fileID: 7308813379479290437}
   - component: {fileID: 276046361966387136}
-  - component: {fileID: 5782830698762956599}
   - component: {fileID: 8871589207219072835}
   - component: {fileID: 3271667606386019254}
   - component: {fileID: 1785813042949456007}
-  - component: {fileID: 1891229590}
   m_Layer: 0
   m_Name: CastleController
   m_TagString: Untagged
@@ -191,18 +189,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DebugLog: 1
---- !u!114 &5782830698762956599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7308813379479290434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07d7ebf58da304f71add8b8a157172cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!33 &8871589207219072835
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -240,15 +226,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1891229590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7308813379479290434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90be50d95d58f438ab7c7409c524648e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

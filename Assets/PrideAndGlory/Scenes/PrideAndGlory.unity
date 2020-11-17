@@ -264,7 +264,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &22753860
 Transform:
   m_ObjectHideFlags: 0
@@ -4699,8 +4699,8 @@ GameObject:
   - component: {fileID: 536077644}
   - component: {fileID: 536077645}
   - component: {fileID: 536077643}
-  - component: {fileID: 536077640}
   - component: {fileID: 536077641}
+  - component: {fileID: 536077640}
   m_Layer: 0
   m_Name: Castle_Holder
   m_TagString: Castle_Holder
@@ -20185,11 +20185,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: player_position
-      objectReference: {fileID: 0}
-    - target: {fileID: 6407758852015650750, guid: fcc93171112a34f2aa0dd48280ccdac6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1114023636946978159, guid: fcc93171112a34f2aa0dd48280ccdac6,
         type: 3}

@@ -10,6 +10,7 @@ public class MapObstacles : MonoBehaviour
     public GameObject Cam;
     float CamXpos;
     float CamZpos;
+    Vector3 layo;
     public float height;
     // must be query where the camera is located
     public GameObject[] obstacles;
@@ -30,16 +31,25 @@ public class MapObstacles : MonoBehaviour
 
     void CheckObjs(){
 
+        
         float xPos = Cam.transform.position.x;
         float zPos = Cam.transform.position.z;
 
+        
+        float dist = Vector3.Distance(Cam.transform.position, layo);    
+
+        Debug.Log(dist);
+
         if(xPos == CamXpos || zPos == CamZpos){
             return;           
-        } else {
+       }else if(dist < 4){
+            return;
+       } else {        
             CamXpos = xPos;
             CamZpos = zPos;
+            layo = Cam.transform.position;
         }
-
+        
         Debug.Log("CheckObjs");
 
 
@@ -61,7 +71,7 @@ public class MapObstacles : MonoBehaviour
       //  Debug.Log(data);        
         
 
-        for(int i=0; i < 20; i++){
+        for(int i=0; i < 10; i++){
             string objName = N[i]["_id"].Value;
             string objecttype = N[i]["objecttype"].Value;
             float xpos = N[i]["x"].AsFloat;
